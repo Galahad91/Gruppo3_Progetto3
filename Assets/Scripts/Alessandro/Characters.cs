@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Characters : MonoBehaviour
 {
+	const float GRANDEZZA_CASELLA = 2.4F;
+
 
     // Vita massima e attuale
     public float health;
@@ -29,7 +31,7 @@ public class Characters : MonoBehaviour
     public string strongAgainst;
 	public Transform TargetTorre;
 	//distanza dal target
-	[Range(1,10)]
+	[Range(1,40)]
 	public float targetDistance;
 	//costo attacco
 	public int attackCost;
@@ -42,8 +44,10 @@ public class Characters : MonoBehaviour
 	[Range(1,40)]
 	public int sightRange = 5;
 
-	private GameObject ogg_Gestore;
-	private GestoreGioco gestore;
+	protected GameObject ogg_Gestore;
+	[SerializeField] protected GestoreGioco gestore;
+
+
 
 	//Variabile per attivare la priorità e il target
 	public bool AttivoSetTarget = false;
@@ -53,24 +57,28 @@ public class Characters : MonoBehaviour
 	void Awake()
 	{
 
-		ogg_Gestore = GameObject.FindGameObjectWithTag ("GameManager");
-		gestore = ogg_Gestore.GetComponent<GestoreGioco> ();
+		//ogg_Gestore = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GestoreGioco> ();
+		//gestore = ogg_Gestore.GetComponent<GestoreGioco> ();
+
+		gestore = GameObject.Find ("GestoreGioco").GetComponent<GestoreGioco> ();
 
 	}
+
+
 		
 
 	//settiamo la grandezza del radar
 	public void SetRadarSize(BoxCollider Radar)
 	{
 
-		Radar.size = new Vector3 (2.4f*sightRange, 1f, 2.4f*sightRange);
+		Radar.size = new Vector3 (GRANDEZZA_CASELLA*sightRange, 1f, GRANDEZZA_CASELLA*sightRange);
 
 		//Debug.Log (Radar.size);
 
 	}
 
   // Metodo di gestione dei danni inflitti
-  float Attack(GameObject enemy)
+  public float Attack(GameObject enemy)
   {
 
 		Characters currentEnemy = enemy.GetComponent<Characters>();
@@ -144,7 +152,7 @@ public class Characters : MonoBehaviour
   }
 
   // Metodo di sottrazione del danno subito
-  void DamageTaken (float damage)
+  public void DamageTaken (float damage)
   {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -154,11 +162,11 @@ public class Characters : MonoBehaviour
         }
   }
 
-  void Death()
+  public void Death()
   {
 
 		gestore.RimuoviDatoListaPersonaggi (gameObject.name);
-        Destroy(this);
+		GameObject.Destroy (this.gameObject);
   }
 
 
@@ -170,4 +178,5 @@ public class Characters : MonoBehaviour
 
 	}
   
+
 }

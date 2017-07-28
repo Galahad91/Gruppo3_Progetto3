@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class Assassin : Characters
 {
-    
+	
 	[Header("Gestione priorita")]
 	//variabili di priorita
 	[Range(1,5)]
@@ -24,7 +24,7 @@ public class Assassin : Characters
 
 	//variabile temp
 	int t = 0;
-	bool semaforo = true;
+	bool semaforo = true; 
 
 	//Variabile per il radar
 	BoxCollider Radar;
@@ -62,7 +62,7 @@ public class Assassin : Characters
         weakAgainst = "Tower";
         strongAgainst = "Ranged";
         team = "Player 1";
-		targetDistance = 2.4f;
+		targetDistance = 15f;
 		attackCost = 2; 
 		AttivoSetTarget = false;
 		//abbiamo variabile torre anche se non la vediamo scritta qui
@@ -74,7 +74,7 @@ public class Assassin : Characters
 
 		to_do = new List<priorita>();
 		ogg_Gestore = GameObject.FindGameObjectWithTag ("GameManager");
-		gestore = ogg_Gestore.GetComponent<GestoreGioco> ();
+	    gestore = ogg_Gestore.GetComponent<GestoreGioco> ();
 		seek = GetComponent<Seeker>();
 		AggiornaListaPriorita ();
 		IA = gameObject.GetComponent<AILerp> ();
@@ -84,11 +84,12 @@ public class Assassin : Characters
 
 		Radar = gameObject.transform.GetChild (1).GetComponent<BoxCollider> ();
 
+
 	}
 
 	void Start()
 	{
-
+		
 		//Quando istanziamo l'oggetto va aggiunto alla lista dei personaggi presenti in gioco
 		gestore.AggiungereDatoListaPersonaggi (gameObject.tag, currentSteps, gameObject.name, gameObject);
 
@@ -103,6 +104,7 @@ public class Assassin : Characters
 
 	void Update()
 	{
+
 
 		if (gestore.IsFaseCombattimento () == true && currentSteps > 1) 
 		{
@@ -151,7 +153,7 @@ public class Assassin : Characters
 
 		}
 
-		if (currentSteps == 1 && semaforo == true) {
+		if (currentSteps <= 1 && semaforo == true) {
 
 
 			semaforo = false;
@@ -236,7 +238,7 @@ public class Assassin : Characters
 
 		//Attivo il radar
 		//gameObject.GetComponentInChildren<Collider> ().gameObject.SetActive(true);
-
+		gameObject.transform.GetChild (1).gameObject.SetActive (true);
 		//Passo la lista di nemici a una lista interna alla classe
 		if (gameObject.GetComponentInChildren<Radar>().Lista_Nome_Nemico.Count > 0) 
 		{
@@ -273,7 +275,7 @@ public class Assassin : Characters
 		{
 			
 			//IA.target.position = gestore.CercaPerNomeLaTransform (listaNemici [i]).position; 
-			Path p = seek.StartPath (transform.position,gestore.CercaPerNomeLaTransform (listaNemici [i]).position);
+			Path p = seek.StartPath (transform.position, gestore.CercaPerNomeLaTransform (listaNemici [i]).position);
 			p.BlockUntilCalculated ();
 
 			if (p.vectorPath.Count < pathVicino && pathVicino != 0) 

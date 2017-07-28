@@ -11,6 +11,7 @@ public class GestoreGioco : MonoBehaviour {
 	private HUD schermata;
 	private bool FaseCombattimento = false;
 
+
 	[Header("Posizioni torri PLAYER 1")]
 	//torri player 1
 	public Transform Torre1_Player1;
@@ -152,15 +153,26 @@ public class GestoreGioco : MonoBehaviour {
 
 			while (indiceLista_P1 <= Personaggi_P1.Count - 1) 
 			{
+
+
 				AstarPath.active.Scan ();
+
 				oggetto = GameObject.Find (Personaggi_P1 [indiceLista_P1].Nome);
+				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (true);
+				yield return new WaitForSeconds (0.4f);
 				oggetto.GetComponent<Assassin> ().AggiornaListaPriorita();
 				oggetto.GetComponent<Assassin> ().SetTarget ();
+
 				AstarPath.active.Scan ();
+
+
+				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (false);
+
 
 				for(int i = 0; i < Personaggi_P1 [indiceLista_P1].Current_step; i++) 
 				{
-					float distance = Vector3.Distance (oggetto.GetComponent<Characters> ().transform.position, oggetto.GetComponent<AILerp> ().target.position);
+					float distance = Vector3.Distance (oggetto.GetComponent<Characters> ().transform.localPosition, oggetto.GetComponent<AILerp> ().target.localPosition);
+
 					if (distance > oggetto.GetComponent<Characters> ().targetDistance) 
 					{
 						Debug.Log ("Sono entrato nell'if");
@@ -173,16 +185,22 @@ public class GestoreGioco : MonoBehaviour {
 
 						Debug.Log ("Sono entrato nell'else");
 
-						if (oggetto.GetComponent<Characters> ().currentSteps >= oggetto.GetComponent<Characters> ().attackCost)
-						{
+						if (oggetto.GetComponent<Characters> ().currentSteps >= oggetto.GetComponent<Characters> ().attackCost) {
 
 							Debug.Log ("Sono entrato nell'if per eseguire l'attacco");
 							// attacco
 							//istanziare coroutine
-							yield return StartCoroutine(AttaccoPersonaggio(oggetto));
+							yield return StartCoroutine (AttaccoPersonaggio (oggetto));
 
 							//distruggere coroutine
 							//StopCoroutine(AttaccoPersonaggio);
+						} 
+						else 
+						{
+
+							Debug.Log ("Metto gli steps a zero");
+							oggetto.GetComponent<Characters> ().currentSteps = 1;
+
 						}
 						yield return new WaitForSeconds (0.3f);
 					}
@@ -211,31 +229,48 @@ public class GestoreGioco : MonoBehaviour {
 			while (indiceLista_P2 <= Personaggi_P2.Count - 1) 
 			{
 
+
 				AstarPath.active.Scan ();
+
 				oggetto = GameObject.Find (Personaggi_P2 [indiceLista_P2].Nome);
+				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (true);
+				yield return new WaitForSeconds (0.4f);
 				oggetto.GetComponent<Assassin> ().AggiornaListaPriorita();
 				oggetto.GetComponent<Assassin> ().SetTarget ();
+
 				AstarPath.active.Scan ();
+
+
+				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (false);
 
 				for(int i = 0; i < Personaggi_P2 [indiceLista_P2].Current_step; i++) 
 				{
 
-					float distance = Vector3.Distance (oggetto.GetComponent<Characters> ().transform.position, oggetto.GetComponent<AILerp> ().target.position);
-					if (distance > oggetto.GetComponent<Characters> ().targetDistance) {
+					float distance = Vector3.Distance (oggetto.GetComponent<Characters> ().transform.localPosition, oggetto.GetComponent<AILerp> ().target.localPosition);
+
+					if (distance > oggetto.GetComponent<Characters> ().targetDistance) 
+					{
 						oggetto.GetComponent<AILerp> ().canMove = true;
 						oggetto.GetComponent<AILerp> ().canSearch = true;
 						yield return new WaitForSeconds (0.3f);
 					} 
 					else 
 					{
-						if (oggetto.GetComponent<Characters> ().currentSteps >= oggetto.GetComponent<Characters> ().attackCost)
-						{
+						if (oggetto.GetComponent<Characters> ().currentSteps >= oggetto.GetComponent<Characters> ().attackCost) {
 							// attacco
 							//istanziare coroutine
-							yield return StartCoroutine(AttaccoPersonaggio(oggetto));
+							yield return StartCoroutine (AttaccoPersonaggio (oggetto));
 
 							//distruggere coroutine
 							//StopCoroutine(AttaccoPersonaggio);
+						} 
+						else 
+						{
+
+							Debug.Log ("Metto gli steps a zero");
+							oggetto.GetComponent<Characters> ().currentSteps = 1;
+
+
 						}
 						yield return new WaitForSeconds (0.3f);
 					}
@@ -254,11 +289,25 @@ public class GestoreGioco : MonoBehaviour {
 
 	//Coroutine per l'attacco del personaggio 
 	IEnumerator AttaccoPersonaggio(GameObject oggetto)
-	{
+	{ 
+		
+		Animator anim = oggetto.GetComponentInChildren<Animator>();
+		GameObject enemy = oggetto.GetComponent<AILerp> ().target.gameObject;
 
-		oggetto.GetComponent<Characters> ().currentSteps--;
-		Debug.Log ("Attacco");
+		anim.SetBool ("isAttacking", true);
 
+		if (anim.GetBool ("isAttacking")) 
+		{   
+		
+			float danno = oggetto.GetComponent<Characters> ().Attack (enemy);
+			enemy.GetComponent<Characters> ().DamageTaken (danno);
+			oggetto.GetComponent<Characters> ().currentSteps -= oggetto.GetComponent<Characters> ().attackCost;
+			Debug.Log ("Attacco");
+			Debug.Log ("DANNO " + danno);
+			Debug.Log (enemy.GetComponent<Characters>().currentHealth);
+			anim.SetBool ("isAttacking", false);
+		}
+		
 		yield return null;
 
 
@@ -437,13 +486,13 @@ public class GestoreGioco : MonoBehaviour {
 		if (Turni % 2 == 0) 
 		{//player 2
 
-			Personaggi_P2.Remove(CercaPerNome(nome));
+			Personaggi_P1.Remove(CercaPerNome(nome));
 
 		}   
 		else //player 1
 		{
 
-			Personaggi_P1.Remove(CercaPerNome(nome));
+			Personaggi_P2.Remove(CercaPerNome(nome));
 
 		}
 
@@ -456,12 +505,12 @@ public class GestoreGioco : MonoBehaviour {
 		if (Turni % 2 == 0) 
 		{//player 2
 
-			for (int i = 0; i < Personaggi_P2.Count; i++) {
+			for (int i = 0; i < Personaggi_P1.Count; i++) {
 
-				if (Personaggi_P2 [i].Nome == nome) {
+				if (Personaggi_P1 [i].Nome == nome) {
 
 
-					return Personaggi_P2 [i];
+					return Personaggi_P1 [i];
 
 				}
 
@@ -471,12 +520,12 @@ public class GestoreGioco : MonoBehaviour {
 		else //player 1
 		{
 			
-			for (int i = 0; i < Personaggi_P1.Count; i++) {
+			for (int i = 0; i < Personaggi_P2.Count; i++) {
 
-				if (Personaggi_P1 [i].Nome == nome) {
+				if (Personaggi_P2 [i].Nome == nome) {
 
 
-					return Personaggi_P1 [i];
+					return Personaggi_P2 [i];
 
 				}
 
