@@ -1,0 +1,460 @@
+fileFormatVersion: 2
+guid: f72b658bc9174864d8e7a0cf78040f10
+timeCreated: 1501165669
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Tank_mecha_parts_0
+    21300002: Tank_mecha_parts_1
+    21300004: Tank_mecha_parts_2
+    21300006: Tank_mecha_parts_3
+    21300008: Tank_mecha_parts_4
+    21300010: Tank_mecha_parts_5
+    21300012: Tank_mecha_parts_6
+    21300014: Tank_mecha_parts_7
+    21300016: Tank_mecha_parts_8
+    21300018: Tank_mecha_parts_9
+    21300020: Tank_mecha_parts_10
+    21300022: Tank_mecha_parts_11
+    21300024: Tank_mecha_parts_12
+    21300026: Tank_mecha_parts_13
+    21300028: Tank_mecha_parts_14
+    21300030: Tank_mecha_parts_15
+    21300032: Tank_mecha_parts_16
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tank_mecha_parts_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1004
+        width: 371
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5, y: 0.020661157}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 136.5, y: 116}
+        - {x: -102.5, y: 116}
+        - {x: -124.5, y: 114}
+        - {x: -172.5, y: 51}
+        - {x: -180.5, y: -2}
+        - {x: -180.5, y: -42}
+        - {x: -104.5, y: -116}
+        - {x: 16.5, y: -116}
+        - {x: 180.5, y: -3}
+        - {x: 180.5, y: 62}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_1
+      rect:
+        serializedVersion: 2
+        x: 772.99994
+        y: 940.99994
+        width: 143.00006
+        height: 305.00006
+      alignment: 9
+      pivot: {x: 0.50000024, y: 0.01639364}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 66.5, y: -62.5}
+        - {x: 66.5, y: 113.5}
+        - {x: 25.5, y: 147.5}
+        - {x: -30.5, y: 147.5}
+        - {x: -66.5, y: 102.5}
+        - {x: -66.5, y: -2.5}
+        - {x: 5.5, y: -146.5}
+        - {x: 7.5, y: -147.5}
+        - {x: 22.5, y: -147.5}
+        - {x: 66.5, y: -106.5}
+        - {x: 66.5, y: -92.5}
+        - {x: 65.5, y: -87.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_2
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1103
+        width: 144
+        height: 113
+      alignment: 9
+      pivot: {x: 0.5, y: 0.044247787}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9, y: 51.5}
+        - {x: -67, y: -6.5}
+        - {x: -67, y: -33.5}
+        - {x: -65, y: -38.5}
+        - {x: -23, y: -51.5}
+        - {x: 11, y: -51.5}
+        - {x: 67, y: 24.5}
+        - {x: 67, y: 47.5}
+        - {x: 60, y: 51.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 698
+        width: 386
+        height: 305
+      alignment: 9
+      pivot: {x: 0.5, y: 0.016393442}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -188, y: 147.5}
+        - {x: -188, y: 78.5}
+        - {x: 3, y: -102.5}
+        - {x: 64, y: -147.5}
+        - {x: 131, y: -147.5}
+        - {x: 188, y: -107.5}
+        - {x: 188, y: 43.5}
+        - {x: 24, y: 147.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_4
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 698
+        width: 306.99994
+        height: 363
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.013774104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 91.5, y: 176.5}
+        - {x: -115.5, y: 42.5}
+        - {x: -148.5, y: -37.5}
+        - {x: -148.5, y: -64.5}
+        - {x: -75.5, y: -166.5}
+        - {x: -61.5, y: -176.5}
+        - {x: -44.5, y: -176.5}
+        - {x: 148.5, y: 125.5}
+        - {x: 148.5, y: 176.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_5
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 835
+        width: 355
+        height: 263
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.019011406}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -125.5, y: 126.5}
+        - {x: -172.5, y: -9.5}
+        - {x: -172.5, y: -93.5}
+        - {x: -153.5, y: -126.5}
+        - {x: -19.5, y: -126.5}
+        - {x: 172.5, y: 8.5}
+        - {x: 172.5, y: 126.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_6
+      rect:
+        serializedVersion: 2
+        x: 6.000001
+        y: 4
+        width: 460
+        height: 688
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.0072674416}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 339}
+        - {x: -112, y: 334}
+        - {x: -225, y: 221}
+        - {x: -225, y: -136}
+        - {x: -219, y: -227}
+        - {x: -148, y: -339}
+        - {x: -132, y: -339}
+        - {x: 225, y: 155}
+        - {x: 225, y: 289}
+        - {x: 161, y: 339}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_7
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 451.00003
+        width: 299.99994
+        height: 345.99997
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.01445078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 67, y: 168}
+        - {x: -145, y: -78}
+        - {x: -145, y: -168}
+        - {x: -104, y: -168}
+        - {x: 7, y: -133}
+        - {x: 145, y: 46}
+        - {x: 145, y: 122}
+        - {x: 131, y: 168}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_8
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 642
+        width: 178
+        height: 166
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03012048}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -69, y: 78}
+        - {x: -84, y: 9}
+        - {x: -84, y: -8}
+        - {x: -9, y: -73}
+        - {x: 3, y: -78}
+        - {x: 38, y: -78}
+        - {x: 74, y: -70}
+        - {x: 84, y: -54}
+        - {x: 84, y: -35}
+        - {x: -34, y: 78}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_9
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 497
+        width: 145
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5, y: 0.04464286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 58.5, y: 49}
+        - {x: 52.5, y: 51}
+        - {x: -0.5, y: 51}
+        - {x: -67.5, y: -1}
+        - {x: -67.5, y: -40}
+        - {x: -58.5, y: -51}
+        - {x: -33.5, y: -51}
+        - {x: -23.5, y: -48}
+        - {x: 45.5, y: -6}
+        - {x: 67.5, y: 21}
+        - {x: 67.5, y: 37}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_10
+      rect:
+        serializedVersion: 2
+        x: 695.00006
+        y: 336.99997
+        width: 133.99994
+        height: 118.00003
+      alignment: 9
+      pivot: {x: 0.4999998, y: 0.042373132}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62, y: -38}
+        - {x: -38, y: -54}
+        - {x: 16, y: -54}
+        - {x: 62, y: 9}
+        - {x: 62, y: 54}
+        - {x: -7, y: 54}
+        - {x: -62, y: 28}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_11
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 374.99997
+        width: 102
+        height: 107.00003
+      alignment: 9
+      pivot: {x: 0.5, y: 0.04672924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 48.5}
+        - {x: -46, y: 6.5}
+        - {x: -3, y: -48.5}
+        - {x: 34, y: -48.5}
+        - {x: 46, y: -44.5}
+        - {x: 46, y: 8.5}
+        - {x: -6, y: 48.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_12
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 245
+        width: 149
+        height: 187.99997
+      alignment: 9
+      pivot: {x: 0.5, y: 0.026595749}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.5, y: 89}
+        - {x: -42.5, y: 89}
+        - {x: -69.5, y: 48}
+        - {x: -69.5, y: -9}
+        - {x: -13.5, y: -89}
+        - {x: 67.5, y: -89}
+        - {x: 69.5, y: -84}
+        - {x: 69.5, y: -58}
+        - {x: 23.5, y: 60}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_13
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 0
+        width: 167
+        height: 299
+      alignment: 9
+      pivot: {x: 0.5, y: 0.013377926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.5, y: 145}
+        - {x: -34.5, y: 145}
+        - {x: -78.5, y: 101}
+        - {x: -78.5, y: 21}
+        - {x: 28.5, y: -145}
+        - {x: 45.5, y: -145}
+        - {x: 78.5, y: -100}
+        - {x: 78.5, y: -64}
+        - {x: 50.5, y: 128}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_14
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 43
+        width: 327
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.01724138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -158.5, y: 140}
+        - {x: -158.5, y: -140}
+        - {x: 22.5, y: -140}
+        - {x: 158.5, y: -50}
+        - {x: 158.5, y: 140}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_15
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 147
+        width: 155
+        height: 85
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05882353}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 37.5}
+        - {x: -72.5, y: 15.5}
+        - {x: -72.5, y: -29.5}
+        - {x: -63.5, y: -37.5}
+        - {x: 3.5, y: -37.5}
+        - {x: 72.5, y: -14.5}
+        - {x: 72.5, y: 19.5}
+        - {x: 56.5, y: 37.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tank_mecha_parts_16
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 11
+        width: 79
+        height: 122
+      alignment: 9
+      pivot: {x: 0.5, y: 0.040983602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 56}
+        - {x: -34.5, y: -21}
+        - {x: -11.5, y: -56}
+        - {x: 28.5, y: -56}
+        - {x: 34.5, y: -43}
+        - {x: 34.5, y: 18}
+        - {x: -3.5, y: 56}
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 98380390407061
+  assetBundleName: 
+  assetBundleVariant: 
