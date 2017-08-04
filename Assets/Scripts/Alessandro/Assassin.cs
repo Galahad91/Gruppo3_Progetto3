@@ -30,6 +30,8 @@ public class Assassin : Characters
 	public GameObject ogg_Gestore;
 	private GestoreGioco gestore;
 
+	//TEST
+	//public Color color;
 
 	#region LISTA_TO_DO
 
@@ -232,6 +234,8 @@ public class Assassin : Characters
 
 		Radar = gameObject.transform.GetChild (1).GetComponent<BoxCollider> ();
 
+
+
 		//Cambiamo nome al personaggio
 		AggiornoNome();
 
@@ -404,7 +408,9 @@ public class Assassin : Characters
 
 		LiberaCasella (casella);
 		gestore.RimuoviDatoListaPersonaggi (gameObject.name);
-		Destroy (this.gameObject);
+		IA.target = null;
+		StartCoroutine (Explosion ());
+		//Destroy (this.gameObject);
 
 	}
 
@@ -422,8 +428,8 @@ public class Assassin : Characters
 			gestore.Nexus_Player1.gameObject.GetComponent<Structures> ().DamageTaken (Danno);
 
 			//Mettere l'effetto esplosione
+			StartCoroutine (Explosion ());
 
-			Destroy (this.gameObject);
 
 		} 
 		else 
@@ -432,7 +438,8 @@ public class Assassin : Characters
 			//Player 1 Togliere danno al Nexus2
 
 			gestore.Nexus_Player2.gameObject.GetComponent<Structures> ().DamageTaken (Danno);
-			Destroy (this.gameObject);
+
+			StartCoroutine (Explosion ());
 
 		}
 
@@ -443,8 +450,11 @@ public class Assassin : Characters
 	/// Metodo che sottrae danno al nemico
 	/// </summary>
 	/// <param name="damage"> Quanto danno viene applicato </param>
-	public void DamageTaken_Assassin (float damage)
+	public void DamageTaken_Assassin (float damage, Color color)
 	{
+
+		StartCoroutine (ParticleDamage (color));
+
 		currentHealth -= damage;
 		if (currentHealth <= 0)
 		{
@@ -453,4 +463,29 @@ public class Assassin : Characters
 		}
 	}
 
+
+	IEnumerator Explosion()
+	{
+		//Posizione dell'effetto Explosion nella gerarchia dell'oggetto (Ste se sposti cose ti taglio le mani)
+		this.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+		//Posizione del personaggio nella gerarchia dell'oggetto (Ste anche qua sposti cose ti taglio le mani)
+		this.transform.GetChild (4).gameObject.SetActive (false);
+		yield return new WaitForSeconds (2f);
+		Destroy (this.gameObject);
+
+	}
+	//TEST
+	IEnumerator ParticleDamage(Color color)
+	{
+
+		ParticleSystem startingColor = this.transform.GetChild (5).GetComponent<ParticleSystem> ();
+		var main = startingColor.main;
+		main.startColor = new ParticleSystem.MinMaxGradient (color);
+
+
+		yield return new WaitForSeconds (0.3f);
+
+		this.transform.GetChild(5).GetComponent<ParticleSystem>().Play();
+
+	}
 }

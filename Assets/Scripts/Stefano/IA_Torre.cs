@@ -14,6 +14,8 @@ public class IA_Torre : MonoBehaviour
 	public int Danno = 10;
 	[Header("Costo della torre")]
 	public int Costo = 1;
+	[Header("Colore della torre")]
+	public Color colore;
 
 	[Header("VARIABILI DI DEBUG NON MODIFICABILI")]
 	[SerializeField]
@@ -123,7 +125,7 @@ public class IA_Torre : MonoBehaviour
 
 			if (Lista_Nemici[i] != null) 
 			{
-				Lista_Nemici [i].gameObject.GetComponent<Assassin> ().DamageTaken_Assassin (Danno);
+				Lista_Nemici [i].gameObject.GetComponent<Assassin> ().DamageTaken_Assassin (Danno, colore);
 				Debug.Log (gameObject.name + " ha attaccato");
 			} 
 			else 

@@ -784,7 +784,7 @@ public class GestoreGioco : MonoBehaviour {
 			if (Turni % 2 == 0) 
 			{ //Player 2
 				
-				Energia1 += 10;
+				Energia1 = 10;
 				schermata.AggiornaEnergiaPlayer1 ();
 				P1_HUD.SetActive (false);
 				P2_HUD.SetActive (true);
@@ -794,7 +794,7 @@ public class GestoreGioco : MonoBehaviour {
 			{ //Player 1
 
 
-				Energia2 += 10;
+				Energia2 = 10;
 				schermata.AggiornaEnergiaPlayer2 ();
 				P1_HUD.SetActive (true);
 				P2_HUD.SetActive (false);
