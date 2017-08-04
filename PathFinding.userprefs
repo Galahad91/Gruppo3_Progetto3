@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlayerAStar.cs">
+    <Files>
+      <File FileName="Assets\MyGameManager.cs" Line="100" Column="2" />
+      <File FileName="Assets\PlayerAStar.cs" Line="90" Column="64" />
+      <File FileName="Assets\2D Grid Based AI\Scripts\SpatialAStar.cs" Line="153" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

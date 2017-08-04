@@ -22,7 +22,7 @@ public class MyDebug : MonoBehaviour {
 
 	}
 
-	void Update()
+	/*void Update()
 	{
 
 		if (gestore.IsFaseCombattimento() == true) {
@@ -39,9 +39,9 @@ public class MyDebug : MonoBehaviour {
 
 		turno.text = "Turno: " + gestore.GetTurno ().ToString ();
 
-	}
+	}*/
 
-	public void AttivaDebugMode(GameObject finestra)
+	/*public void AttivaDebugMode(GameObject finestra)
 	{
 
 		if (finestra.activeSelf == true) {
@@ -180,7 +180,7 @@ public class MyDebug : MonoBehaviour {
 
 		}
 
-	}
+	}*/
 		
 
 }

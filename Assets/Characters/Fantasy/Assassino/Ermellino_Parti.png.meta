@@ -1,0 +1,607 @@
+fileFormatVersion: 2
+guid: b07cfebac3fc5ab44bea733e74f0d62c
+timeCreated: 1501335628
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ermellino_Parti_0
+    21300002: Ermellino_Parti_1
+    21300004: Ermellino_Parti_2
+    21300006: Ermellino_Parti_3
+    21300008: Ermellino_Parti_4
+    21300010: Ermellino_Parti_5
+    21300012: Ermellino_Parti_6
+    21300014: Ermellino_Parti_7
+    21300016: Ermellino_Parti_8
+    21300018: Ermellino_Parti_9
+    21300020: Ermellino_Parti_10
+    21300022: Ermellino_Parti_11
+    21300024: Ermellino_Parti_12
+    21300026: Ermellino_Parti_13
+    21300028: Ermellino_Parti_14
+    21300030: Ermellino_Parti_15
+    21300032: Ermellino_Parti_16
+    21300034: Ermellino_Parti_17
+    21300036: Ermellino_Parti_18
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ermellino_Parti_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 826
+        width: 5
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1.5, y: 4}
+        - {x: -2.5, y: 1}
+        - {x: -2.5, y: -4}
+        - {x: 1.5, y: -4}
+        - {x: 2.5, y: -1}
+        - {x: 2.5, y: 4}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 715
+        width: 306.64432
+        height: 273.28857
+      alignment: 9
+      pivot: {x: 0.48753554, y: 0.01829568}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.5, y: 128}
+        - {x: -109.5, y: 116}
+        - {x: -139.5, y: 97}
+        - {x: -144.5, y: 90}
+        - {x: -144.5, y: 38}
+        - {x: -108.5, y: -51}
+        - {x: -10.5, y: -111}
+        - {x: 25.5, y: -128}
+        - {x: 96.5, y: -128}
+        - {x: 148.5, y: -80}
+        - {x: 148.5, y: 36}
+        - {x: 115.5, y: 128}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_2
+      rect:
+        serializedVersion: 2
+        x: 417.51193
+        y: 383.19424
+        width: 256.1182
+        height: 618.7561
+      alignment: 9
+      pivot: {x: 0.50557935, y: 0.009382947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 301.5}
+        - {x: -88, y: 215.5}
+        - {x: -119, y: 130.5}
+        - {x: -119, y: -261.5}
+        - {x: -63, y: -301.5}
+        - {x: 119, y: -301.5}
+        - {x: 119, y: 280.5}
+        - {x: 113, y: 301.5}
+      - - {x: 56, y: -295.5}
+        - {x: 57, y: -297.5}
+        - {x: 59, y: -297.5}
+        - {x: 62, y: -295.5}
+        - {x: 62, y: -290.5}
+        - {x: 61, y: -288.5}
+        - {x: 59, y: -288.5}
+        - {x: 56, y: -290.5}
+      - - {x: 69, y: -288.5}
+        - {x: 72, y: -287.5}
+        - {x: 72, y: -284.5}
+        - {x: 69, y: -283.5}
+        - {x: 67, y: -285.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_3
+      rect:
+        serializedVersion: 2
+        x: 721.72925
+        y: 639
+        width: 273.4054
+        height: 331.5337
+      alignment: 9
+      pivot: {x: 0.5057353, y: 0.015081423}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -124, y: 16}
+        - {x: -111, y: -74}
+        - {x: 75, y: -160}
+        - {x: 99, y: -160}
+        - {x: 124, y: -151}
+        - {x: 124, y: -65}
+        - {x: -10, y: 160}
+        - {x: -124, y: 160}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 737
+        width: 15
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1.5, y: 18}
+        - {x: -7.5, y: -3}
+        - {x: -7.5, y: -18}
+        - {x: 2.5, y: -18}
+        - {x: 5.5, y: -12}
+        - {x: 7.5, y: 3}
+        - {x: 7.5, y: 18}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_5
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 529
+        width: 167
+        height: 168
+      alignment: 9
+      pivot: {x: 0.5, y: 0.029761905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24.5, y: 79}
+        - {x: -26.5, y: 79}
+        - {x: -78.5, y: 26}
+        - {x: -78.5, y: -42}
+        - {x: -10.5, y: -79}
+        - {x: 78.5, y: -79}
+        - {x: 78.5, y: 13}
+        - {x: 38.5, y: 71}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_6
+      rect:
+        serializedVersion: 2
+        x: 783.9641
+        y: 384.27774
+        width: 207.50024
+        height: 235.18661
+      alignment: 9
+      pivot: {x: 0.51583505, y: 0.02858266}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 93, y: 105.5}
+        - {x: 84, y: 110.5}
+        - {x: 58, y: 110.5}
+        - {x: 49, y: 105.5}
+        - {x: -12, y: 46.5}
+        - {x: -93, y: -92.5}
+        - {x: -93, y: -110.5}
+        - {x: -44, y: -110.5}
+        - {x: -13, y: -86.5}
+        - {x: 65, y: -15.5}
+        - {x: 93, y: 71.5}
+      - - {x: -55, y: -67.5}
+        - {x: -56, y: -68.5}
+      - - {x: -40, y: -21.5}
+        - {x: -41, y: -25.5}
+        - {x: -39, y: -27.5}
+        - {x: -38, y: -27.5}
+        - {x: -34, y: -24.5}
+        - {x: -32, y: -19.5}
+        - {x: -35, y: -17.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_7
+      rect:
+        serializedVersion: 2
+        x: 35.91009
+        y: 112.18229
+        width: 202.84723
+        height: 396.6311
+      alignment: 9
+      pivot: {x: 0.5032847, y: 0.027273985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 88, y: 186.5}
+        - {x: 6, y: 186.5}
+        - {x: -56, y: 145.5}
+        - {x: -90, y: 54.5}
+        - {x: -90, y: -12.5}
+        - {x: -71, y: -186.5}
+        - {x: -13, y: -186.5}
+        - {x: 0, y: -175.5}
+        - {x: 90, y: 78.5}
+        - {x: 90, y: 176.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_8
+      rect:
+        serializedVersion: 2
+        x: 403.07355
+        y: 3
+        width: 245.92645
+        height: 375.79834
+      alignment: 9
+      pivot: {x: 0.50798297, y: 0.013305008}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 181}
+        - {x: -30, y: 183}
+        - {x: -87, y: 183}
+        - {x: -115, y: 163}
+        - {x: -116, y: 156}
+        - {x: -116, y: -32}
+        - {x: -28, y: -143}
+        - {x: 74, y: -183}
+        - {x: 107, y: -183}
+        - {x: 116, y: -172}
+        - {x: 116, y: -139}
+        - {x: 71, y: -108}
+      - - {x: -35, y: 183}
+        - {x: -36, y: 181}
+        - {x: -34, y: 178}
+        - {x: -31, y: 177}
+        - {x: -28, y: 178}
+        - {x: -28, y: 180}
+        - {x: -31, y: 183}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_9
+      rect:
+        serializedVersion: 2
+        x: 679.81903
+        y: 174
+        width: 141.13373
+        height: 188
+      alignment: 9
+      pivot: {x: 0.5468641, y: 0.026595743}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 89}
+        - {x: -66, y: 62}
+        - {x: -66, y: -68}
+        - {x: -39, y: -89}
+        - {x: 23, y: -89}
+        - {x: 44, y: -85}
+        - {x: 57, y: -49}
+        - {x: 57, y: 28}
+        - {x: 29, y: 89}
+      - - {x: 12, y: -81}
+        - {x: 5, y: -85}
+        - {x: 5, y: -89}
+        - {x: 24, y: -89}
+        - {x: 25, y: -88}
+        - {x: 24, y: -85}
+        - {x: 20, y: -81}
+      - - {x: 34, y: -82}
+        - {x: 32, y: -82}
+        - {x: 30, y: -85}
+        - {x: 30, y: -87}
+        - {x: 32, y: -88}
+        - {x: 35, y: -88}
+        - {x: 36, y: -86}
+        - {x: 36, y: -83}
+      - - {x: 47, y: -76}
+        - {x: 49, y: -78}
+        - {x: 52, y: -77}
+        - {x: 52, y: -74}
+        - {x: 50, y: -72}
+        - {x: 47, y: -73}
+      - - {x: 47, y: -71}
+        - {x: 50, y: -70}
+        - {x: 50, y: -67}
+        - {x: 47, y: -66}
+        - {x: 45, y: -68}
+      - - {x: 57, y: -50}
+        - {x: 55, y: -57}
+        - {x: 57, y: -59}
+        - {x: 61, y: -58}
+        - {x: 62, y: -54}
+        - {x: 62, y: -50}
+        - {x: 60, y: -49}
+      - - {x: 61, y: -43}
+        - {x: 61, y: -47}
+        - {x: 64, y: -47}
+        - {x: 66, y: -46}
+        - {x: 66, y: -36}
+        - {x: 63, y: -37}
+      - - {x: 62, y: -19}
+        - {x: 64, y: -21}
+        - {x: 66, y: -20}
+        - {x: 66, y: -9}
+        - {x: 63, y: -10}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_10
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 310
+        width: 9
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.5, y: 10.5}
+        - {x: -4.5, y: -3.5}
+        - {x: -2.5, y: -3.5}
+        - {x: 0.5, y: -8.5}
+        - {x: 1.5, y: -10.5}
+        - {x: 4.5, y: -10.5}
+        - {x: 4.5, y: 5.5}
+        - {x: 2.5, y: 10.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_11
+      rect:
+        serializedVersion: 2
+        x: 826.2929
+        y: 174.97635
+        width: 166.15802
+        height: 196.9231
+      alignment: 9
+      pivot: {x: 0.4887341, y: 0.045823224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.5, y: 88}
+        - {x: -76.5, y: 56}
+        - {x: -76.5, y: -66}
+        - {x: -69.5, y: -88}
+        - {x: 37.5, y: -88}
+        - {x: 76.5, y: -47}
+        - {x: 76.5, y: 69}
+        - {x: 44.5, y: 88}
+      - - {x: -74.5, y: 36}
+        - {x: -76.5, y: 32}
+        - {x: -76.5, y: 25}
+        - {x: -72.5, y: 25}
+        - {x: -70.5, y: 29}
+        - {x: -70.5, y: 35}
+        - {x: -71.5, y: 36}
+      - - {x: -76.5, y: 58}
+        - {x: -76.5, y: 38}
+        - {x: -73.5, y: 36}
+        - {x: -70.5, y: 37}
+        - {x: -70.5, y: 53}
+        - {x: -74.5, y: 58}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_12
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 272
+        width: 9
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.5, y: 7}
+        - {x: -4.5, y: 4}
+        - {x: -4.5, y: -7}
+        - {x: -1.5, y: -7}
+        - {x: 4.5, y: -1}
+        - {x: 4.5, y: 7}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_13
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 248
+        width: 5
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.5, y: 6.5}
+        - {x: -2.5, y: -6.5}
+        - {x: 2.5, y: -6.5}
+        - {x: 2.5, y: 6.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_14
+      rect:
+        serializedVersion: 2
+        x: 21.307383
+        y: 7.9546223
+        width: 276.3772
+        height: 124.517715
+      alignment: 9
+      pivot: {x: 0.49820542, y: 0.064612314}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -131, y: 54}
+        - {x: -131, y: -3}
+        - {x: -34, y: -54}
+        - {x: 131, y: -54}
+        - {x: 131, y: -2}
+        - {x: 49, y: 52}
+        - {x: 26, y: 54}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_15
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 116
+        width: 8
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 6}
+        - {x: -4, y: -6}
+        - {x: 2, y: -6}
+        - {x: 4, y: -4}
+        - {x: 4, y: 6}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_16
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1
+        width: 115
+        height: 152
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.032894738}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10.5, y: 71}
+        - {x: -35.5, y: 71}
+        - {x: -40.5, y: 61}
+        - {x: -52.5, y: 4}
+        - {x: -52.5, y: -48}
+        - {x: 2.5, y: -71}
+        - {x: 41.5, y: -71}
+        - {x: 46.5, y: -69}
+        - {x: 52.5, y: -13}
+        - {x: 52.5, y: 54}
+        - {x: 37.5, y: 65}
+      - - {x: -49.5, y: 53}
+        - {x: -52.5, y: 53}
+        - {x: -52.5, y: 40}
+        - {x: -50.5, y: 40}
+        - {x: -47.5, y: 44}
+        - {x: -47.5, y: 51}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_17
+      rect:
+        serializedVersion: 2
+        x: 687.3268
+        y: 26
+        width: 123.67322
+        height: 150
+      alignment: 9
+      pivot: {x: 0.51080763, y: 0.033333335}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.5, y: -6}
+        - {x: 48.5, y: 53}
+        - {x: 43.5, y: 70}
+        - {x: 5.5, y: 70}
+        - {x: -49.5, y: 62}
+        - {x: -55.5, y: 29}
+        - {x: -55.5, y: -32}
+        - {x: -12.5, y: -70}
+        - {x: 50.5, y: -70}
+        - {x: 55.5, y: -52}
+        - {x: 55.5, y: -19}
+        - {x: 48.5, y: -12}
+      - - {x: 49.5, y: 23}
+        - {x: 48.5, y: 20}
+        - {x: 52.5, y: 15}
+        - {x: 54.5, y: 15}
+        - {x: 55.5, y: 16}
+        - {x: 55.5, y: 19}
+        - {x: 51.5, y: 23}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ermellino_Parti_18
+      rect:
+        serializedVersion: 2
+        x: 838.0712
+        y: 34.309452
+        width: 126.9469
+        height: 139.69055
+      alignment: 9
+      pivot: {x: 0.49177077, y: 0.040736813}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51.5, y: 64.5}
+        - {x: -56.5, y: 11.5}
+        - {x: -56.5, y: -20.5}
+        - {x: -21.5, y: -57.5}
+        - {x: 0.5, y: -64.5}
+        - {x: 56.5, y: -64.5}
+        - {x: 56.5, y: 64.5}
+      - - {x: 44.5, y: 24.5}
+        - {x: 43.5, y: 21.5}
+        - {x: 47.5, y: 16.5}
+        - {x: 49.5, y: 16.5}
+        - {x: 51.5, y: 18.5}
+        - {x: 51.5, y: 19.5}
+        - {x: 46.5, y: 24.5}
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 98391518851154
+  assetBundleName: 
+  assetBundleVariant: 

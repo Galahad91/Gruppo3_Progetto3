@@ -5,8 +5,9 @@ using Pathfinding;
 
 public class Assassin : Characters
 {
-	
-	[Header("Gestione priorita")]
+    
+	//Variabili per la decisione di priorità del personaggio
+	[Header(" DEPRECATO! Gestione priorita")]
 	//variabili di priorita
 	[Range(1,5)]
 	public int Nexus;
@@ -15,33 +16,184 @@ public class Assassin : Characters
 	[Range(1,5)]
 	public int Nemici;
 
-	private AILerp IA;
-	public GameObject ogg_Gestore;
-	private GestoreGioco gestore;
-	private bool isFighting = false;
-	private bool aggiorna = false;
-	private Seeker seek;
+	[Header("Costo del personaggio")]
+	public int Costo = 1;
 
-	//variabile temp
-	int t = 0;
-	bool semaforo = true; 
+	[Header("Danno Nexus")]
+	public int Danno = 5;
 
 	//Variabile per il radar
 	BoxCollider Radar;
 	GameObject Radar_ogg;
 
+	//Variabili per accedere a GestoreGioco
+	public GameObject ogg_Gestore;
+	private GestoreGioco gestore;
 
-	private List<priorita> to_do;
 
-	public class priorita
-	{
+	#region LISTA_TO_DO
 
-		public string Nome_Priorita;
-		public int Defcon_Priorita;
-		public Transform Posizione_Priorita;
+	//---------------------------------------------------------------------------------------------------- CODICE LISTA PRIORITA'
+												
+												private List<priorita> to_do;
 
-	}
+												public class priorita
+												{
+
+													public string Nome_Priorita;
+													public int Defcon_Priorita;
+													public Transform Posizione_Priorita;
+
+												}
+
+
+		/// <summary>
+		/// Aggiorno la lista delle priorita
+		/// </summary>
+		public void AggiornaListaPriorita()
+		{
+
+			//PRIORITA' NEXUS
+			priorita dato = new priorita ();
+
+			dato.Nome_Priorita = "Nexus";
+			dato.Defcon_Priorita = Nexus;
+
+			if (gameObject.layer == LayerMask.NameToLayer ("Player 1")) 
+			{
+
+				dato.Posizione_Priorita = gestore.Nexus_Player2;
+
+			} 
+			else if (gameObject.layer == LayerMask.NameToLayer ("Player 2")) 
+			{
+
+				dato.Posizione_Priorita = gestore.Nexus_Player1;
+
+			} 
+			else 
+			{
+
+				dato.Posizione_Priorita = null;
+				Debug.LogError ("il nexus corrente is null");
+
+			}
+
+			//Aggiungo dato 
+			to_do.Add (dato);
+
+			dato = new priorita ();
+
+			//PRIORITA' TORRI
+
+			dato.Nome_Priorita = "Torri";
+			dato.Defcon_Priorita = Torri;
+
+			if (gameObject.GetComponent<Characters> ().TargetTorre != null) 
+			{
+
+				dato.Posizione_Priorita = gameObject.GetComponent<Characters> ().TargetTorre;
+
+			} 
+			else 
+			{
+
+				dato.Posizione_Priorita = to_do [0].Posizione_Priorita;
+
+			}
+
+			//Aggiungo dato
+			to_do.Add (dato);
+
+			//PRIORITA' NEMICO
+
+			//Aggiungiamo nelle priorità il nemico 
+			to_do.Add (GetNemico());
+		}
+
+		/// <summary>
+		/// Metodo che ritorna il nemico come target
+		/// </summary>
+		/// <returns> Ritorna un oggetto di tipo priorità </returns>
+		private priorita GetNemico()
+		{
+
+			List<string> listaNemici = new List<string>();
+			priorita dato;
+
+			/*//Passo la lista di nemici a una lista interna alla classe
+			if (gameObject.GetComponentInChildren<Radar>().GetListaNemici().Count > 0) 
+			{
+
+				listaNemici = gameObject.GetComponentInChildren<Radar> ().GetListaNemici();
+
+
+			} 
+			else 
+			{
+
+				Debug.LogError ("Target nullo, nessun nemico in zona");
+
+				dato = new priorita ();
+
+				dato.Nome_Priorita = "Nemici";
+				dato.Defcon_Priorita = Nemici;
+				dato.Posizione_Priorita = null;
+
+				//esco immediatamente dal metodo
+				return dato;
+			}
+
+			//PARTE DEICISIONALE DELLA IA IN CUI VALUTA IL NEMICO MIGLIORE DA SELEZIONARE 
+			//PER ORA FACCIAMO QUELLO PIU' VICINO 
+
+			int pathVicino = 0;
+			int indice = 0;
+			Transform target = null;
+
+			//calcoliamo il target più vicino
+			for(int i = 0; i < listaNemici.Count; i++)
+			{
+
+				Path p = seek.StartPath (transform.position,gestore.CercaPerNome (listaNemici [i]).Oggetto.transform.position);
+				p.BlockUntilCalculated ();
+
+				if (p.vectorPath.Count < pathVicino && pathVicino != 0) 
+				{
+
+					pathVicino = p.vectorPath.Count;
+					indice = i; //indice della lista in cui contiene il personaggio più vicino
+
+				}
+				else
+				{ 
+					//Assegno il primo valore della lista di nomi perchè se no rimane zero!!!
+					pathVicino = p.vectorPath.Count;
+
+				}
+			}*/
+
+			dato = new priorita ();
+
+			dato.Nome_Priorita = "Nemici";
+			dato.Defcon_Priorita = Nemici;
+			//dato.Posizione_Priorita = gestore.CercaPerNome(listaNemici [indice]).Oggetto.transform;
+			dato.Posizione_Priorita = null;
+
+			Debug.LogError ("il target nemico : " + dato.Posizione_Priorita);
+
+			//Resetto la lista di nemici nel radar
+			//gameObject.GetComponentInChildren<Radar> ().ResetListaNemici();
+
+			return dato;
+
+
+		}
 		
+	//---------------------------------------------------------------------------------------------------- FINE
+
+	#endregion
+
     public Assassin()
     {
 
@@ -62,8 +214,6 @@ public class Assassin : Characters
         weakAgainst = "Tower";
         strongAgainst = "Ranged";
         team = "Player 1";
-		targetDistance = 15f;
-		attackCost = 2; 
 		AttivoSetTarget = false;
 		//abbiamo variabile torre anche se non la vediamo scritta qui
 
@@ -73,31 +223,43 @@ public class Assassin : Characters
 	{
 
 		to_do = new List<priorita>();
-		ogg_Gestore = GameObject.FindGameObjectWithTag ("GameManager");
-	    gestore = ogg_Gestore.GetComponent<GestoreGioco> ();
-		seek = GetComponent<Seeker>();
-		AggiornaListaPriorita ();
-		IA = gameObject.GetComponent<AILerp> ();
 
-		gameObject.name = gameObject.name + gestore.contatore_nemico.ToString ();
-		gestore.contatore_nemico++;
+		ogg_Gestore = GameObject.FindGameObjectWithTag ("GameManager");
+		gestore = ogg_Gestore.GetComponent<GestoreGioco> ();
+
+		seek = GetComponent<Seeker>();
+		IA = gameObject.GetComponent<AILerp> ();
 
 		Radar = gameObject.transform.GetChild (1).GetComponent<BoxCollider> ();
 
+		//Cambiamo nome al personaggio
+		AggiornoNome();
 
 	}
 
 	void Start()
 	{
-		
-		//Quando istanziamo l'oggetto va aggiunto alla lista dei personaggi presenti in gioco
-		gestore.AggiungereDatoListaPersonaggi (gameObject.tag, currentSteps, gameObject.name, gameObject);
 
+		//Quando istanziamo l'oggetto va aggiunto alla lista dei personaggi presenti in gioco
+		if(gestore.GetTurno()%2 == 0)
+		{
+			//Turno Player 2
+			gestore.AggiungereDatoListaPersonaggi (gameObject.tag, steps, currentSteps, gameObject.name, this.gameObject, true);
+		}
+		else
+		{
+			//Turno Player 1
+			gestore.AggiungereDatoListaPersonaggi (gameObject.tag, steps, currentSteps, gameObject.name, this.gameObject, false );
+		}
+
+		//gameObject.transform.GetChild(1).gameObject.SetActive(true);
 		Attendi ();
-		//gameObject.transform.GetChild (1).gameObject.SetActive (true);
-		SetRadarSize (Radar);
-		//gameObject.transform.GetChild (1).gameObject.SetActive (false);
+		//SetRadarSize (Radar);
+		AggiornaListaPriorita ();
 		SetTarget ();
+		//gameObject.transform.GetChild(1).gameObject.SetActive(false);
+
+
 
 	}
 
@@ -105,213 +267,92 @@ public class Assassin : Characters
 	void Update()
 	{
 
-
-		if (gestore.IsFaseCombattimento () == true && currentSteps > 1) 
+		if (gestore.Turni % 2 == 0 ) 
 		{
 
-			//Avvia ();
-			semaforo = true;
-
-		} 
-		else 
-		{
-
-			if (aggiorna == true) 
+			if (gestore.IsFaseCombattimento () == true && gameObject.layer == LayerMask.NameToLayer("Player 2")) 
 			{
 
-				aggiorna = false;
-				t = 0;
-				currentSteps = steps;
-				Debug.Log ("current Steps: " + currentSteps);
+				Avvia ();
 
+				//Settiamo un nuovo target
+				/*if (AttivoSetTarget == true) 
+				{
 
-				//DEPRECATO
-				//gestore.AggiornaDatoListaPersonaggi (gameObject.name, 0, gameObject.tag, steps);
+					AttivoSetTarget = false;
+					SetTarget ();
 
+				}*/
 
-			}
-				
+			} else {
 
-		}
+				Attendi ();
 
-		if (currentSteps == 1 && gestore.IsFaseCombattimento () == false ) 
-		{
+				//FASE DI PREPARAZIONE
 
-			if (gestore.GetTurno () % 2 != 0 && gameObject.layer == LayerMask.NameToLayer ("Player 1")) {
+				/*if (currentSteps <= 0) 
+				{	
+					
+					ResetSteps ();
 
-				aggiorna = true;
-
-			}
-			if (gestore.GetTurno () % 2 == 0 && gameObject.layer == LayerMask.NameToLayer ("Player 2")) {
-
-				aggiorna = true;
+				}*/
+					
 
 			}
-
-			//DEPRECATO
-			//gestore.AggiornaDatoListaPersonaggi (gameObject.name, steps, gameObject.tag, currentSteps);
-
-		}
-
-		if (currentSteps <= 1 && semaforo == true) {
-
-
-			semaforo = false;
-
-			gestore.AggiornaPersonaggiFermi ();
-
-
-		}
-			
-
-		if (AttivoSetTarget == true) {
-
-			AttivoSetTarget = false;
-			SetTarget ();
-
-		}
-
-	}
-
-	//Aggiorno la lista delle priorita
-	public void AggiornaListaPriorita()
-	{
-
-		priorita dato = new priorita ();
-
-		dato.Nome_Priorita = "Nexus";
-		dato.Defcon_Priorita = Nexus;
-
-		if (gameObject.layer == LayerMask.NameToLayer ("Player 1")) 
-		{
-
-			dato.Posizione_Priorita = gestore.Nexus_Player2;
-
-		} 
-		else if (gameObject.layer == LayerMask.NameToLayer ("Player 2")) 
-		{
-
-			dato.Posizione_Priorita = gestore.Nexus_Player1;
-
 		} 
 		else 
 		{
 
-			dato.Posizione_Priorita = null;
-			Debug.LogError ("il nexus corrente is null");
-
-		}
-
-		//Aggiungo dato 
-		to_do.Add (dato);
-
-		dato = new priorita ();
-
-		dato.Nome_Priorita = "Torri";
-		dato.Defcon_Priorita = Torri;
-
-		if (gameObject.GetComponent<Characters> ().TargetTorre != null) 
-		{
-			
-			dato.Posizione_Priorita = gameObject.GetComponent<Characters> ().TargetTorre;
-
-		} 
-		else 
-		{
-
-			dato.Posizione_Priorita = to_do [0].Posizione_Priorita;
-
-		}
-
-		//Aggiungo dato
-		to_do.Add (dato);
-
-		//Aggiungiamo nelle priorità il nemico 
-		to_do.Add (GetNemico());
-	}
-
-	//Metodo che ritorna il nemico come target
-	private priorita GetNemico()
-	{
-		
-		List<string> listaNemici = new List<string>();
-
-		//Attivo il radar
-		//gameObject.GetComponentInChildren<Collider> ().gameObject.SetActive(true);
-		gameObject.transform.GetChild (1).gameObject.SetActive (true);
-		//Passo la lista di nemici a una lista interna alla classe
-		if (gameObject.GetComponentInChildren<Radar>().Lista_Nome_Nemico.Count > 0) 
-		{
-
-			listaNemici = gameObject.GetComponentInChildren<Radar> ().Lista_Nome_Nemico;
-		
-
-		} 
-		else 
-		{
-
-			Debug.LogError ("Target nullo");
-
-			priorita dato = new priorita ();
-
-			dato.Nome_Priorita = "Nemici";
-			dato.Defcon_Priorita = Nemici;
-			dato.Posizione_Priorita = null;
-
-			return dato;
-		}
-
-		//Disattivo il radar
-		//gameObject.GetComponentInChildren<Collider> ().gameObject.SetActive(false);
-
-		//PARTE DEICISIONALE DELLA IA IN CUI VALUTA IL NEMICO MIGLIORE DA SELEZIONARE 
-		//PER ORA FACCIAMO QUELLO PIU' VICINO 
-
-		int pathVicino = 0;
-		Transform target = null;
-		int j = 0;
-		//calcoliamo il target più vicino
-		for(int i = 0; i < listaNemici.Count; i++)
-		{
-			
-			//IA.target.position = gestore.CercaPerNomeLaTransform (listaNemici [i]).position; 
-			Path p = seek.StartPath (transform.position, gestore.CercaPerNomeLaTransform (listaNemici [i]).position);
-			p.BlockUntilCalculated ();
-
-			if (p.vectorPath.Count < pathVicino && pathVicino != 0) 
+			if (gestore.IsFaseCombattimento () == true && gameObject.layer == LayerMask.NameToLayer("Player 1")) 
 			{
 
-				pathVicino = p.vectorPath.Count;
-				j = i;
+				Avvia ();
 
-			}
-			else
-			{ 
-				//Assegno il primo valore della lista di nomi perchè se no rimane zero!!!
-				pathVicino = p.vectorPath.Count;
+				//Settiamo un nuovo target
+				/*if (AttivoSetTarget == true) 
+				{
+
+					AttivoSetTarget = false;
+					SetTarget ();
+
+				}*/
+
+			} else {
+
+				Attendi ();
+
+				//FASE DI PREPARAZIONE
+
+				/*if (currentSteps <= 0) 
+				{	
+					
+					ResetSteps ();
+
+				}*/
+
 
 			}
 		}
 
-		//target.position = gestore.CercaPerNomeLaTransform (listaNemici [0]).position; 
-		priorita dato2 = new priorita ();
-
-		dato2.Nome_Priorita = "Nemici";
-		dato2.Defcon_Priorita = Nemici;
-		dato2.Posizione_Priorita = gestore.CercaPerNomeLaTransform (listaNemici [j]);
-
-
-		Debug.LogError ("il target nemico : " + target);
-
-		//Resetto la lista di nemici nel radar
-		gameObject.GetComponentInChildren<Radar> ().ResetListaNemici();
-
-		return dato2;
-
 
 	}
 
-	//calcolo della priorita principale
+
+	/// <summary>
+	/// Aggiorniamo il nome del personaggio 
+	/// </summary>
+	private void AggiornoNome()
+	{
+
+		gameObject.name = gameObject.name + gestore.contatore_nemico.ToString ();
+		gestore.contatore_nemico++;
+
+	}
+		
+	/// <summary>
+	/// Calcolo della priorita principale
+	/// </summary>
+	/// <returns> Ritorna il transform della priorità </returns>
 	public Transform GetPriorita()
 	{
 
@@ -344,7 +385,10 @@ public class Assassin : Characters
 
 	}
 
-	//Settare il target dato dalla priorita
+
+	/// <summary>
+	/// Settiamo il target al personaggio date le sue priorità
+	/// </summary>
 	public void SetTarget()
 	{
 
@@ -352,108 +396,61 @@ public class Assassin : Characters
 
 	}
 
-
-	//mettiamo in attesa il nostro personaggio
-	public void Attendi()
+	/// <summary>
+	/// Override del metodo Death()
+	/// </summary>
+	public override void Death()
 	{
 
-		IA.canMove = false;
-		IA.canSearch = false;
+		LiberaCasella (casella);
+		gestore.RimuoviDatoListaPersonaggi (gameObject.name);
+		Destroy (this.gameObject);
 
 	}
 
-	public void Avvia()
+	/// <summary>
+	/// Metodo di suicidio per il quale il personaggio muore infliggendo danno al Nexus
+	/// </summary>
+	public void ToraToraTora()
 	{
 
-		IA.canMove = true;
-		IA.canSearch = true;
-
-	}
-
-	//Metodo per aggiornare gli steps rimanenti 
-	private void AggiornaStepsCorrenti()
-	{
-
-		/*usiamo la classe Path della libreria Pathfinding e assegnamo seek.StartPath per stabilire 
-		 * un percorso iniziale e finale (transform), passiamo i nodi ad una lista inizializzandola a -1
-		 * per non far contare la posizione di partenza, ad ogni nodo richiamiamo OnTargetReached()
-		 */
-
-
-		if (currentSteps > 1) 
+		//Controllo il turno per capire a quale Nexus fare dann
+		if (this.gestore.Turni % 2 == 0) 
 		{
-			
-			currentSteps--;
-			Debug.Log (currentSteps);
+			//Player 2 Togliere danno al Nexus1
 
+			gestore.Nexus_Player1.gameObject.GetComponent<Structures> ().DamageTaken (Danno);
 
-		}
+			//Mettere l'effetto esplosione
+
+			Destroy (this.gameObject);
+
+		} 
 		else 
 		{
-			Attendi ();
-			Debug.Log ("ATTENDO");
+
+			//Player 1 Togliere danno al Nexus2
+
+			gestore.Nexus_Player2.gameObject.GetComponent<Structures> ().DamageTaken (Danno);
+			Destroy (this.gameObject);
 
 		}
 
+
 	}
 
-
-	void OnTriggerEnter(Collider altro)
+	/// <summary>
+	/// Metodo che sottrae danno al nemico
+	/// </summary>
+	/// <param name="damage"> Quanto danno viene applicato </param>
+	public void DamageTaken_Assassin (float damage)
 	{
-
-		float distance = 0;
-
-		if (to_do [2].Posizione_Priorita.position != null)
+		currentHealth -= damage;
+		if (currentHealth <= 0)
 		{
-			try
-			{
-			 	distance = Vector3.Distance (altro.transform.position, to_do [2].Posizione_Priorita.position);
-		
-
-				if (altro.tag == "Casella" ) 
-				{
-					if (distance <= targetDistance)
-					{
-						Attendi ();
-					}
-					//Debug.Log ("Sorry");
-					//IA.OnTargetReached();
-					AstarPath.active.Scan ();
-					AggiornaStepsCorrenti ();
-					altro.gameObject.layer = 8;
-					Attendi ();
-
-				}
-			}
-			catch 
-			{
-
-				Debug.LogError ("Operazione non consentita");
-
-				if (altro.tag == "Casella" ) 
-				{
-					
-					//Debug.Log ("Sorry");
-					//IA.OnTargetReached();
-					AstarPath.active.Scan ();
-					AggiornaStepsCorrenti ();
-					altro.gameObject.layer = 8;
-					Attendi ();
-
-				}
-
-			}
+			currentHealth = 0;
+			Death();                
 		}
-
 	}
-
-	void OnTriggerExit(Collider altro)
-	{
-
-
-		altro.gameObject.layer = 0;
-
-	}
-
 
 }

@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: 9ad78108749163a4d87743324ac8313b
+timeCreated: 1501586621
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Camaleonte_Mecha_Parti_Divise_0
+    21300002: Camaleonte_Mecha_Parti_Divise_1
+    21300004: Camaleonte_Mecha_Parti_Divise_2
+    21300006: Camaleonte_Mecha_Parti_Divise_3
+    21300008: Camaleonte_Mecha_Parti_Divise_4
+    21300010: Camaleonte_Mecha_Parti_Divise_5
+    21300012: Camaleonte_Mecha_Parti_Divise_6
+    21300014: Camaleonte_Mecha_Parti_Divise_7
+    21300016: Camaleonte_Mecha_Parti_Divise_8
+    21300018: Camaleonte_Mecha_Parti_Divise_9
+    21300020: Camaleonte_Mecha_Parti_Divise_10
+    21300022: Camaleonte_Mecha_Parti_Divise_11
+    21300024: Camaleonte_Mecha_Parti_Divise_12
+    21300026: Camaleonte_Mecha_Parti_Divise_13
+    21300028: Camaleonte_Mecha_Parti_Divise_14
+    21300030: Camaleonte_Mecha_Parti_Divise_15
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_0
+      rect:
+        serializedVersion: 2
+        x: 93.53793
+        y: 793.9025
+        width: 915.46204
+        height: 219.09747
+      alignment: 9
+      pivot: {x: 0.5035294, y: 0.5070687}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 351.33435, y: 58.62262}
+        - {x: 347.83484, y: 88.22266}
+        - {x: 254.88885, y: 83.40082}
+        - {x: 206.97705, y: 70.190674}
+        - {x: 39.07257, y: 72.53424}
+        - {x: 20.875427, y: 103}
+        - {x: -63.64334, y: 103}
+        - {x: -201.4502, y: 74.078125}
+        - {x: -289.89227, y: 44.49408}
+        - {x: -449.5, y: 50.270813}
+        - {x: -449.5, y: -103}
+        - {x: -346.79684, y: -73.264404}
+        - {x: -302.05756, y: -84.07782}
+        - {x: -259.96832, y: -102.78137}
+        - {x: -128.02423, y: -102.62915}
+        - {x: -63.485535, y: -81.1308}
+        - {x: 5.2214355, y: -86.802185}
+        - {x: 204.31104, y: -18.060913}
+        - {x: 343.19873, y: -15.077148}
+        - {x: 449.5, y: -9}
+        - {x: 449.5, y: 40.75763}
+        - {x: 442.46948, y: 50.675476}
+        - {x: 391.28613, y: 59.64496}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_1
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 631
+        width: 230
+        height: 178
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 84}
+        - {x: -24, y: 69}
+        - {x: -110, y: -36}
+        - {x: -110, y: -84}
+        - {x: -10, y: -84}
+        - {x: 87, y: -40}
+        - {x: 110, y: 29}
+        - {x: 110, y: 84}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_2
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 458.66144
+        width: 375
+        height: 427.33856
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5050763}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.5, y: 206.5}
+        - {x: -78.6048, y: 206.5}
+        - {x: -108.62842, y: 192.03027}
+        - {x: -129.95215, y: 156.28522}
+        - {x: -182.5, y: 96.302734}
+        - {x: -182.5, y: -115.5}
+        - {x: -56.334106, y: -155.14728}
+        - {x: -28.5, y: -206.5}
+        - {x: 89.5, y: -206.5}
+        - {x: 162.5, y: -156.5}
+        - {x: 182.5, y: -132.5}
+        - {x: 182.5, y: -30.5}
+        - {x: 114.5, y: 105.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 615
+        width: 182
+        height: 130
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -86, y: 60}
+        - {x: -86, y: 41}
+        - {x: -62, y: -42}
+        - {x: -8, y: -60}
+        - {x: 71, y: -60}
+        - {x: 86, y: -30}
+        - {x: 86, y: -9}
+        - {x: 9, y: 60}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 586
+        width: 99
+        height: 177
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.5, y: 83.5}
+        - {x: -44.5, y: 50.5}
+        - {x: -44.5, y: -69.5}
+        - {x: -37.5, y: -83.5}
+        - {x: 6.5, y: -83.5}
+        - {x: 44.5, y: -37.5}
+        - {x: 44.5, y: 83.5}
+      - - {x: 22.5, y: -54.5}
+        - {x: 25.5, y: -57.5}
+        - {x: 28.5, y: -56.5}
+        - {x: 28.5, y: -54.5}
+        - {x: 25.5, y: -51.5}
+        - {x: 23.5, y: -51.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_5
+      rect:
+        serializedVersion: 2
+        x: 5.3794804
+        y: 10
+        width: 357.6205
+        height: 563.704
+      alignment: 9
+      pivot: {x: 0.5078582, y: 0.49937555}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75.35671, y: 99.74603}
+        - {x: -44.710953, y: 159.25195}
+        - {x: -33, y: 78.5}
+        - {x: -14, y: 24.5}
+        - {x: 1, y: 35.5}
+        - {x: 4, y: 47.5}
+        - {x: 43, y: 52.5}
+        - {x: 49, y: 229.5}
+        - {x: -2, y: 276.5}
+        - {x: -171, y: 276.5}
+        - {x: -171, y: -146.5}
+        - {x: 43, y: -276.5}
+        - {x: 171, y: -276.5}
+        - {x: 171, y: -169.5}
+        - {x: -56, y: 16.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_6
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 162
+        width: 290
+        height: 460
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49999997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: 225}
+        - {x: -140, y: -12.179901}
+        - {x: -140, y: -136}
+        - {x: -122, y: -168}
+        - {x: -82, y: -225}
+        - {x: -5, y: -225}
+        - {x: 9.180664, y: -210.29175}
+        - {x: 23.66336, y: -191.7083}
+        - {x: 140, y: -33.826782}
+        - {x: 140, y: 223}
+        - {x: 132, y: 225}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_7
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 297
+        width: 191
+        height: 176
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49.5, y: 83}
+        - {x: -90.5, y: 29}
+        - {x: -90.5, y: -30}
+        - {x: -64.5, y: -83}
+        - {x: 59.5, y: -83}
+        - {x: 90.5, y: -54}
+        - {x: 90.5, y: 33.497253}
+        - {x: 59.693054, y: 38.609406}
+        - {x: 23.326965, y: 52.525177}
+        - {x: 0.40179443, y: 83}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_8
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 426
+        width: 162
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76, y: 51}
+        - {x: -76, y: 9}
+        - {x: -11.892273, y: -4.7288513}
+        - {x: 12.571655, y: -45.24655}
+        - {x: 76, y: -51}
+        - {x: 76, y: 34}
+        - {x: -33, y: 51}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_9
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 318
+        width: 139
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29.5, y: 44}
+        - {x: -61.5, y: 44}
+        - {x: -64.5, y: 29}
+        - {x: -64.5, y: -37}
+        - {x: -58.5, y: -38}
+        - {x: 1.5, y: -44}
+        - {x: 59.5, y: -44}
+        - {x: 64.5, y: -40.53952}
+        - {x: 64.5, y: -9}
+        - {x: 52.5, y: 13}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_10
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 269
+        width: 99
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.5, y: 69}
+        - {x: -44.5, y: 54}
+        - {x: -44.5, y: -61}
+        - {x: -35.5, y: -69}
+        - {x: 1.5, y: -69}
+        - {x: 44.5, y: 14}
+        - {x: 44.5, y: 69}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_11
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 197
+        width: 139
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55.5, y: 45}
+        - {x: -64.5, y: 38}
+        - {x: -64.5, y: -13}
+        - {x: -63.5, y: -19}
+        - {x: -37.5, y: -45}
+        - {x: 1.5, y: -45}
+        - {x: 9.5, y: -44}
+        - {x: 64.5, y: -20}
+        - {x: 64.5, y: -2}
+        - {x: 19.5, y: 45}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_12
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 162
+        width: 113
+        height: 116
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51.5, y: 53}
+        - {x: -51.5, y: -25}
+        - {x: -9.5, y: -53}
+        - {x: 51.5, y: -53}
+        - {x: 51.5, y: 7}
+        - {x: 1.5, y: 53}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_13
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 39
+        width: 150
+        height: 160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 56}
+        - {x: -51, y: 75}
+        - {x: -70, y: 75}
+        - {x: -70, y: 62}
+        - {x: -65, y: 52}
+        - {x: -51, y: -20}
+        - {x: -4, y: -75}
+        - {x: 37, y: -75}
+        - {x: 46, y: -73}
+        - {x: 70, y: -65}
+        - {x: 70, y: -36}
+        - {x: 41, y: 35}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_14
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 39
+        width: 160
+        height: 135
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 62.5}
+        - {x: -75, y: -1.5}
+        - {x: -75, y: -62.5}
+        - {x: 16, y: -62.5}
+        - {x: 75, y: 30.5}
+        - {x: 75, y: 62.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Camaleonte_Mecha_Parti_Divise_15
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 39
+        width: 142
+        height: 101
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 45.5}
+        - {x: -64, y: 45.5}
+        - {x: -66, y: 44.5}
+        - {x: -66, y: -34.5}
+        - {x: 11, y: -45.5}
+        - {x: 56, y: -45.5}
+        - {x: 66, y: -36.5}
+        - {x: 66, y: -21.5}
+        - {x: 55, y: 5.5}
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 98407979465853
+  assetBundleName: 
+  assetBundleVariant: 

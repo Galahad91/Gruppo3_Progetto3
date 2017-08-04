@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class InfoCasella : MonoBehaviour {
 
-	public GameObject oggettoManager;
+	/*public GameObject oggettoManager;
 	private IstanziareOggetto istanzia;
 	private GestoreGioco gestore;
 
 	public bool isCamminabile;
 	public float x;
 	public float z;
+
+	[Header("Layer dove istanziare le torri (numerico)")]
+	public int Layer_Torri; //Nome del layer in cui si possono istanziare le torri
+	
 
 	void Start()
 	{
@@ -24,8 +28,7 @@ public class InfoCasella : MonoBehaviour {
 	void OnMouseUp()
 	{
 
-		if (gameObject.layer == LayerMask.NameToLayer("Player 1") && gestore.GetTurno () % 2 != 0 && istanzia.GetOggettoIstanzia().layer == gameObject.layer ) 
-		{
+		if (gameObject.layer == LayerMask.NameToLayer ("Player 1") && gestore.GetTurno () % 2 != 0 && istanzia.GetOggettoIstanzia ().layer == gameObject.layer) {
 			
 			//Debug.Log ("click");
 			istanzia.x = gameObject.transform.position.x;
@@ -48,9 +51,7 @@ public class InfoCasella : MonoBehaviour {
 			}
 
 
-		} 
-		else if (gameObject.layer == LayerMask.NameToLayer("Player 2")  && gestore.GetTurno () % 2 == 0 && istanzia.GetOggettoIstanzia().layer == gameObject.layer) 
-		{
+		} else if (gameObject.layer == LayerMask.NameToLayer ("Player 2") && gestore.GetTurno () % 2 == 0 && istanzia.GetOggettoIstanzia ().layer == gameObject.layer) {
 			
 			//Debug.Log ("click");
 			istanzia.x = gameObject.transform.position.x;
@@ -72,10 +73,20 @@ public class InfoCasella : MonoBehaviour {
 
 			}
 
+		} 
+		else if (gameObject.layer == Layer_Torri) 
+		{
+
+			Debug.Log ("Istanzio le torri");
+
+			istanzia.x = gameObject.transform.position.x;
+			istanzia.z = gameObject.transform.position.z;
+
 		}
+
 
 
 	}
 
-
+*/
 }

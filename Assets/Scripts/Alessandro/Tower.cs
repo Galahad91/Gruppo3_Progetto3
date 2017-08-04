@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Tower : Structures
 {
-    
+	[Header("Radar della torre")]
+	public BoxCollider ogg_Radar;
+	private Radar Radar_torre;
+
     public Tower()
     {
         health = 100;
@@ -14,4 +17,14 @@ public class Tower : Structures
         strongAgainst = "Assassin";
         team = "Player 1";
     }
+
+	//Settiamo la grandezza del radar come prima cosa da fare quando avviamo il gioco
+	void Awake()
+	{
+
+		//AttivaRadar ();
+		//SetRadarSize (ogg_Radar);
+		//DisattivaRadar ();
+
+	}
 }

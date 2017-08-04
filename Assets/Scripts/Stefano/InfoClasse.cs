@@ -17,8 +17,10 @@ public class InfoClasse : MonoBehaviour {
 		gestore = ogg_Gestore.GetComponent<GestoreGioco> ();
 
 	}
-
-	//Premiamo l`icona per prendere l`oggetto da istanziare sulla plancia di gioco
+		
+	/// <summary>
+	/// Premiamo l`icona per prendere l`oggetto da istanziare sulla plancia di gioco
+	/// </summary>
 	void OnMouseUp()
 	{
 
@@ -59,47 +61,41 @@ public class InfoClasse : MonoBehaviour {
 	}
 
 
-	//stesso metodo di quello sopra solo che viene richiamato da bottone
+	/// <summary>
+	/// Stesso metodo di quello sopra solo che viene richiamato da bottone
+	/// </summary>
+	/// <param name="oggetto">Oggetto.</param>
 	public void ScegliClasse(GameObject oggetto)
 	{
 
-		if (gestore.GetTurno () % 2 == 0 && gameObject.layer == LayerMask.NameToLayer ("Player 2")) 
-		{
-			if (oggetto != null) 
-			{
+		if (gestore.GetTurno () % 2 == 0 && (gameObject.layer == LayerMask.NameToLayer ("Player 2") || gameObject.layer == LayerMask.NameToLayer("Torre P2"))) {
+			if (oggetto != null) {
 
 				istanzia.SetOggettoIstanzia (oggetto);
 				Debug.Log ("Assegnato personaggio");
 
-			} 
-			else 
-			{
+			} else {
 
 				Debug.LogError ("Personaggio non assegnato all`icona");
 
 			}
 
-		}
-		else if (gestore.GetTurno () % 2 != 0 && gameObject.layer == LayerMask.NameToLayer ("Player 1")) 
-		{
+		} else if (gestore.GetTurno () % 2 != 0 && (gameObject.layer == LayerMask.NameToLayer ("Player 1") || gameObject.layer == LayerMask.NameToLayer("Torre P1"))) {
 
-			if (oggetto != null) 
-			{
+			if (oggetto != null) {
 
 				istanzia.SetOggettoIstanzia (oggetto);
 				Debug.Log ("Assegnato personaggio");
 
-			} 
-			else 
-			{
+			} else {
 
 				Debug.LogError ("Personaggio non assegnato all`icona");
 
 			}
 
-		}
+		} 
 
-		Debug.Log ("Premuto");
+		//Debug.Log ("Premuto");
 
 	}
 

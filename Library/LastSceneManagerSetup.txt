@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Sispera.unity
+  isLoaded: 1
+  isActive: 1

@@ -1,0 +1,732 @@
+fileFormatVersion: 2
+guid: 6ec536180ec49c14ba385ca700113639
+timeCreated: 1501258060
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Cinghiale_parts_0
+    21300002: Cinghiale_parts_1
+    21300004: Cinghiale_parts_2
+    21300006: Cinghiale_parts_3
+    21300008: Cinghiale_parts_4
+    21300010: Cinghiale_parts_5
+    21300012: Cinghiale_parts_6
+    21300014: Cinghiale_parts_7
+    21300016: Cinghiale_parts_8
+    21300018: Cinghiale_parts_9
+    21300020: Cinghiale_parts_10
+    21300022: Cinghiale_parts_11
+    21300024: Cinghiale_parts_12
+    21300026: Cinghiale_parts_13
+    21300028: Cinghiale_parts_14
+    21300030: Cinghiale_parts_15
+    21300032: Cinghiale_parts_16
+    21300034: Cinghiale_parts_17
+    21300036: Cinghiale_parts_18
+    21300038: Cinghiale_parts_19
+    21300040: Cinghiale_parts_21
+    21300042: Cinghiale_parts_22
+    21300044: Cinghiale_parts_23
+    21300046: Cinghiale_parts_24
+    21300048: Cinghiale_parts_25
+    21300050: Cinghiale_parts_26
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cinghiale_parts_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1036
+        width: 243
+        height: 228
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.021929825}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -116.5, y: 109}
+        - {x: -116.5, y: -88}
+        - {x: -44.5, y: -109}
+        - {x: 116.5, y: -109}
+        - {x: 116.5, y: 109}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1039.2891
+        width: 176.4596
+        height: 206.20496
+      alignment: 9
+      pivot: {x: 0.49869773, y: 0.027695442}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 60, y: 97.5}
+        - {x: -82, y: 85.5}
+        - {x: -83, y: 84.5}
+        - {x: -83, y: 2.5}
+        - {x: -55, y: -97.5}
+        - {x: 36, y: -97.5}
+        - {x: 83, y: 2.5}
+        - {x: 83, y: 97.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_2
+      rect:
+        serializedVersion: 2
+        x: 838.8847
+        y: 861.6957
+        width: 207.5877
+        height: 402.30432
+      alignment: 9
+      pivot: {x: 0.50154847, y: 0.018156208}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 44, y: 195}
+        - {x: -19, y: 195}
+        - {x: -24, y: 188}
+        - {x: -55, y: 144}
+        - {x: -95, y: 48}
+        - {x: -95, y: -116}
+        - {x: -69, y: -195}
+        - {x: 95, y: -195}
+        - {x: 95, y: 165}
+        - {x: 63, y: 191}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_3
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 1233
+        width: 51
+        height: 41
+      alignment: 9
+      pivot: {x: 0.5, y: 0.121951215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: 15.5}
+        - {x: -20.5, y: -4.5}
+        - {x: -18.5, y: -10.5}
+        - {x: -0.5, y: -15.5}
+        - {x: 20.5, y: -15.5}
+        - {x: 20.5, y: 1.5}
+        - {x: 2.5, y: 15.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_4
+      rect:
+        serializedVersion: 2
+        x: 1443
+        y: 1193
+        width: 49
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.065789476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: 33}
+        - {x: -19.5, y: -33}
+        - {x: 10.5, y: -33}
+        - {x: 19.5, y: -24}
+        - {x: 19.5, y: 31}
+        - {x: 14.5, y: 33}
+      - - {x: 0.5, y: 7}
+        - {x: 1.5, y: 14}
+        - {x: 0.5, y: 14}
+        - {x: -0.5, y: 7}
+        - {x: -1.5, y: 1}
+        - {x: -1.5, y: -11}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_5
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 866
+        width: 239
+        height: 343
+      alignment: 9
+      pivot: {x: 0.5, y: 0.01457726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 65.5, y: 166.5}
+        - {x: -114.5, y: -128.5}
+        - {x: -114.5, y: -152.5}
+        - {x: -102.5, y: -166.5}
+        - {x: -81.5, y: -166.5}
+        - {x: -70.5, y: -158.5}
+        - {x: 114.5, y: 105.5}
+        - {x: 114.5, y: 166.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_6
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1151
+        width: 29
+        height: 58
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0862069}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.5, y: 24}
+        - {x: -9.5, y: 20}
+        - {x: -9.5, y: -24}
+        - {x: 9.5, y: -24}
+        - {x: 9.5, y: 24}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_7
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 1112
+        width: 45
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5, y: 0.08064516}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 26}
+        - {x: -17.5, y: -26}
+        - {x: 17.5, y: -26}
+        - {x: 17.5, y: 24}
+        - {x: 15.5, y: 26}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_8
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1077
+        width: 27
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0877193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.5, y: 23.5}
+        - {x: -8.5, y: -23.5}
+        - {x: 7.5, y: -23.5}
+        - {x: 8.5, y: -22.5}
+        - {x: 8.5, y: 23.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_9
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 1030
+        width: 46
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.07575758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: -28}
+        - {x: 3, y: -26}
+        - {x: 0, y: -25}
+        - {x: -2, y: -28}
+      - - {x: -18, y: 28}
+        - {x: -18, y: -24}
+        - {x: 17, y: -24}
+        - {x: 18, y: -23}
+        - {x: 18, y: 28}
+      - - {x: 0, y: 6}
+        - {x: -1, y: 5}
+        - {x: -2, y: 3}
+        - {x: -2, y: -3}
+        - {x: 0, y: -3}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_10
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1014
+        width: 27
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0925926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.5, y: 22}
+        - {x: -8.5, y: -22}
+        - {x: 6.5, y: -22}
+        - {x: 8.5, y: -19}
+        - {x: 8.5, y: 22}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_11
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 971
+        width: 46
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0877193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 23.5}
+        - {x: -18, y: -23.5}
+        - {x: 18, y: -23.5}
+        - {x: 18, y: 22.5}
+        - {x: 14, y: 23.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_12
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 862
+        width: 172
+        height: 149
+      alignment: 9
+      pivot: {x: 0.5, y: 0.033557046}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -81, y: 6.5}
+        - {x: 27, y: -69.5}
+        - {x: 78, y: -69.5}
+        - {x: 81, y: -68.5}
+        - {x: 81, y: -17.5}
+        - {x: 26, y: 69.5}
+        - {x: -64, y: 69.5}
+        - {x: -81, y: 38.5}
+      - - {x: -72, y: 69.5}
+        - {x: -73, y: 68.5}
+        - {x: -72, y: 65.5}
+        - {x: -70, y: 65.5}
+        - {x: -67, y: 68.5}
+        - {x: -67, y: 69.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_13
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 843
+        width: 168
+        height: 159
+      alignment: 9
+      pivot: {x: 0.5, y: 0.03144654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 74.5}
+        - {x: -42, y: 74.5}
+        - {x: -79, y: -14.5}
+        - {x: -79, y: -50.5}
+        - {x: -41, y: -74.5}
+        - {x: -7, y: -74.5}
+        - {x: 71, y: -10.5}
+        - {x: 79, y: 23.5}
+        - {x: 79, y: 54.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_14
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 565
+        width: 309.99994
+        height: 446
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.011210763}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -141, y: 218}
+        - {x: -150, y: 185}
+        - {x: -150, y: -187}
+        - {x: -32, y: -218}
+        - {x: 87, y: -218}
+        - {x: 137, y: -180}
+        - {x: 150, y: -91}
+        - {x: 150, y: 218}
+      - - {x: 89, y: 209}
+        - {x: 80, y: 209}
+        - {x: 79, y: 207}
+        - {x: 79, y: 205}
+        - {x: 92, y: 187}
+        - {x: 96, y: 187}
+        - {x: 99, y: 188}
+        - {x: 99, y: 200}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_15
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 952
+        width: 27
+        height: 53.00006
+      alignment: 9
+      pivot: {x: 0.5, y: 0.09433951}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.5, y: 21.5}
+        - {x: -8.5, y: 17.5}
+        - {x: -8.5, y: -21.5}
+        - {x: 7.5, y: -21.5}
+        - {x: 8.5, y: -20.5}
+        - {x: 8.5, y: 21.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_16
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 572
+        width: 177
+        height: 268
+      alignment: 9
+      pivot: {x: 0.5, y: 0.018656716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -59.5, y: 129}
+        - {x: -83.5, y: 78}
+        - {x: -83.5, y: -97}
+        - {x: -65.5, y: -129}
+        - {x: 58.5, y: -129}
+        - {x: 83.5, y: -93}
+        - {x: 83.5, y: 115}
+        - {x: 62.5, y: 129}
+      - - {x: 15.5, y: 129}
+        - {x: 15.5, y: 127}
+        - {x: 17.5, y: 125}
+        - {x: 19.5, y: 125}
+        - {x: 21.5, y: 127}
+        - {x: 20.5, y: 129}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_17
+      rect:
+        serializedVersion: 2
+        x: 221.30396
+        y: 436.7022
+        width: 206.62872
+        height: 408.63654
+      alignment: 9
+      pivot: {x: 0.4970076, y: 0.020306041}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 195}
+        - {x: -44, y: 185}
+        - {x: -95, y: 7}
+        - {x: -95, y: -92}
+        - {x: -51, y: -194}
+        - {x: -29, y: -195}
+        - {x: 83, y: -195}
+        - {x: 95, y: -171}
+        - {x: 95, y: 195}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_18
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 759
+        width: 187
+        height: 178
+      alignment: 9
+      pivot: {x: 0.5, y: 0.028089888}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 88.5, y: 8}
+        - {x: 63.5, y: 84}
+        - {x: -65.5, y: 84}
+        - {x: -88.5, y: 51}
+        - {x: -88.5, y: 10}
+        - {x: -59.5, y: -46}
+        - {x: -22.5, y: -84}
+        - {x: 31.5, y: -84}
+        - {x: 65.5, y: -57}
+        - {x: 70.5, y: -44}
+        - {x: 88.5, y: -27}
+      - - {x: -44.5, y: 45}
+        - {x: -44.5, y: 44}
+        - {x: -42.5, y: 42}
+        - {x: -41.5, y: 42}
+        - {x: -37.5, y: 46}
+        - {x: -37.5, y: 48}
+        - {x: -40.5, y: 49}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_19
+      rect:
+        serializedVersion: 2
+        x: 59.682014
+        y: 71.72657
+        width: 239.42844
+        height: 402.64606
+      alignment: 9
+      pivot: {x: 0.4962568, y: 0.02799836}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -111.5, y: 191}
+        - {x: -111.5, y: -43}
+        - {x: -107.5, y: -78}
+        - {x: 42.5, y: -191}
+        - {x: 76.5, y: -191}
+        - {x: 98.5, y: -179}
+        - {x: 111.5, y: -167}
+        - {x: 111.5, y: -106}
+        - {x: 3.5, y: 191}
+      - - {x: 92.5, y: 191}
+        - {x: 92.5, y: 179}
+        - {x: 95.5, y: 178}
+        - {x: 111.5, y: 178}
+        - {x: 111.5, y: 191}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_21
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 380
+        width: 171
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.032467533}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44.5, y: 72}
+        - {x: -63.5, y: 72}
+        - {x: -80.5, y: 30}
+        - {x: -80.5, y: 2}
+        - {x: 40.5, y: -72}
+        - {x: 70.5, y: -72}
+        - {x: 80.5, y: -43}
+        - {x: 80.5, y: -14}
+        - {x: 2.5, y: 67}
+      - - {x: 3.5, y: -46}
+        - {x: 11.5, y: -54}
+        - {x: 15.5, y: -57}
+        - {x: 18.5, y: -56}
+        - {x: 18.5, y: -54}
+        - {x: 9.5, y: -44}
+        - {x: 5.5, y: -43}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_22
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 385.00003
+        width: 168
+        height: 158.99997
+      alignment: 9
+      pivot: {x: 0.5, y: 0.031446356}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 74.5}
+        - {x: -42, y: 74.5}
+        - {x: -79, y: -14.5}
+        - {x: -79, y: -49.5}
+        - {x: -41, y: -74.5}
+        - {x: -8, y: -74.5}
+        - {x: 70, y: -1.5}
+        - {x: 79, y: 28.5}
+        - {x: 79, y: 54.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_23
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 44
+        width: 486
+        height: 467
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.010706638}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 111, y: 228.5}
+        - {x: 30, y: 228.5}
+        - {x: -238, y: -81.5}
+        - {x: -238, y: -228.5}
+        - {x: -89, y: -228.5}
+        - {x: 209, y: -141.5}
+        - {x: 238, y: -61.5}
+        - {x: 238, y: 51.5}
+        - {x: 198, y: 152.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_24
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 89.00001
+        width: 167
+        height: 223
+      alignment: 9
+      pivot: {x: 0.5, y: 0.022421492}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.5, y: 106.5}
+        - {x: -78.5, y: 55.5}
+        - {x: -78.5, y: -96.5}
+        - {x: -68.5, y: -106.5}
+        - {x: -14.5, y: -106.5}
+        - {x: 53.5, y: -92.5}
+        - {x: 62.5, y: -81.5}
+        - {x: 62.5, y: 72.5}
+        - {x: 15.5, y: 106.5}
+      - - {x: 59.5, y: -72.5}
+        - {x: 60.5, y: -75.5}
+        - {x: 63.5, y: -75.5}
+        - {x: 68.5, y: -73.5}
+        - {x: 68.5, y: -69.5}
+        - {x: 66.5, y: -67.5}
+        - {x: 63.5, y: -68.5}
+      - - {x: 75.5, y: -37.5}
+        - {x: 77.5, y: -39.5}
+        - {x: 78.5, y: -39.5}
+        - {x: 78.5, y: -34.5}
+        - {x: 76.5, y: -34.5}
+      - - {x: 70.5, y: -25.5}
+        - {x: 72.5, y: -22.5}
+        - {x: 72.5, y: -16.5}
+        - {x: 68.5, y: -16.5}
+        - {x: 66.5, y: -19.5}
+        - {x: 66.5, y: -25.5}
+      - - {x: 63.5, y: 55.5}
+        - {x: 66.5, y: 56.5}
+        - {x: 66.5, y: 59.5}
+        - {x: 63.5, y: 60.5}
+        - {x: 61.5, y: 58.5}
+      - - {x: 17.5, y: 106.5}
+        - {x: 17.5, y: 104.5}
+        - {x: 19.5, y: 102.5}
+        - {x: 21.5, y: 102.5}
+        - {x: 23.5, y: 104.5}
+        - {x: 22.5, y: 106.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_25
+      rect:
+        serializedVersion: 2
+        x: 713.02484
+        y: 18.20538
+        width: 237.73932
+        height: 397.34848
+      alignment: 9
+      pivot: {x: 0.47520602, y: 0.03471668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -101, y: 188}
+        - {x: -109, y: 186}
+        - {x: -109, y: 29}
+        - {x: -91, y: -74}
+        - {x: 45, y: -191}
+        - {x: 104, y: -191}
+        - {x: 112, y: -172}
+        - {x: 112, y: -85}
+        - {x: 0, y: 188}
+      - - {x: 42, y: -161}
+        - {x: 42, y: -159}
+        - {x: 48, y: -151}
+        - {x: 63, y: -128}
+        - {x: 64, y: -125}
+        - {x: 68, y: -118}
+        - {x: 64, y: -125}
+        - {x: 64, y: -132}
+        - {x: 63, y: -132}
+        - {x: 59, y: -135}
+        - {x: 55, y: -143}
+        - {x: 55, y: -149}
+        - {x: 49, y: -151}
+        - {x: 47, y: -153}
+        - {x: 45, y: -152}
+        - {x: 38, y: -161}
+        - {x: 40, y: -165}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Cinghiale_parts_26
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 49
+        width: 10
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 4.5}
+        - {x: -5, y: -4.5}
+        - {x: 5, y: -4.5}
+        - {x: 5, y: 3.5}
+        - {x: 4, y: 4.5}
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 98386446918038
+  assetBundleName: 
+  assetBundleVariant: 

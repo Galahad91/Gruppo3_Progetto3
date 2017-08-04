@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: 42e829f67f3f13e41b5ed9ba79db6c4a
+timeCreated: 1501677305
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: RanaDardoVelenoso_parti_0
+    21300002: RanaDardoVelenoso_parti_1
+    21300004: RanaDardoVelenoso_parti_2
+    21300006: RanaDardoVelenoso_parti_3
+    21300008: RanaDardoVelenoso_parti_4
+    21300010: RanaDardoVelenoso_parti_5
+    21300012: RanaDardoVelenoso_parti_6
+    21300014: RanaDardoVelenoso_parti_7
+    21300016: RanaDardoVelenoso_parti_8
+    21300018: RanaDardoVelenoso_parti_9
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_0
+      rect:
+        serializedVersion: 2
+        x: 718.4082
+        y: 846.08057
+        width: 163.11511
+        height: 344.0161
+      alignment: 9
+      pivot: {x: 0.51860183, y: 0.02883421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_1
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 1055
+        width: 210
+        height: 251
+      alignment: 9
+      pivot: {x: 0.5, y: 0.01992032}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_2
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 281
+        width: 122
+        height: 905
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.0055248616}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_3
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 532
+        width: 406.00003
+        height: 140
+      alignment: 9
+      pivot: {x: 0.49999994, y: 0.035714287}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_4
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 460
+        width: 192
+        height: 212
+      alignment: 9
+      pivot: {x: 0.5, y: 0.023584906}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_5
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 545
+        width: 343
+        height: 423.99994
+      alignment: 9
+      pivot: {x: 0.5, y: 0.011792454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_6
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 51
+        width: 398
+        height: 314.00003
+      alignment: 9
+      pivot: {x: 0.5, y: 0.015923565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_7
+      rect:
+        serializedVersion: 2
+        x: 629.106
+        y: 26.730642
+        width: 334.13074
+        height: 384.50232
+      alignment: 9
+      pivot: {x: 0.5009835, y: 0.018905887}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_8
+      rect:
+        serializedVersion: 2
+        x: 1057.1135
+        y: 25.354496
+        width: 337.5763
+        height: 384.373
+      alignment: 9
+      pivot: {x: 0.5017724, y: 0.022492485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RanaDardoVelenoso_parti_9
+      rect:
+        serializedVersion: 2
+        x: 1514.3737
+        y: 26.183483
+        width: 321.62634
+        height: 150.63136
+      alignment: 9
+      pivot: {x: 0.5118559, y: 0.051891696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 98413920780447
+  assetBundleName: 
+  assetBundleVariant: 

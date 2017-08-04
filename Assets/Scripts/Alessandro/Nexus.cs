@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Nexus : Structures
 {
+	[Header("Radar del Nexus")]
+	public BoxCollider ogg_Radar;
+	private Radar Radar_torre;
     
     public Nexus()
     {
@@ -14,5 +17,15 @@ public class Nexus : Structures
         strongAgainst = "Assassin";
         team = "Player 1";
 
-}
+	}
+
+	//Settiamo la grandezza del radar come prima cosa da fare quando avviamo il gioco
+	void Awake()
+	{
+
+		//AttivaRadar ();
+		//SetRadarSize (ogg_Radar);
+		//DisattivaRadar ();
+
+	}
 }

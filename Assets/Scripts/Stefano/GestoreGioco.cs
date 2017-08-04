@@ -2,79 +2,357 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using UnityEngine.UI;
 
 public class GestoreGioco : MonoBehaviour {
-
-	private int Turni;
-	private int Energia1;
-	private int Energia2;
-	private HUD schermata;
-	private bool FaseCombattimento = false;
+	
 
 
-	[Header("Posizioni torri PLAYER 1")]
+	public int Turni;							//Numero di turni di gioco
+	private int Energia1; 						//Energia spendibile dal Player 1
+	private int Energia2;						//Energia spendibile dal Player 2					
+	private bool FaseCombattimento = false;		//Variabile che indica se il gameplay si trova nella fase combattimento oppure no
+
+	//---------------------------------------------------------------------------------- LISTA DI CLIP AUDIO 
+
+	[Header("Musiche del gioco per i Designer")]
+	public List<Brano> Musica; 
+	[System.Serializable]
+	public class Brano
+	{
+
+		[Header("Canzone/ Suono")]
+		public AudioClip Clip_Audio;
+		[Range(1,10)]
+		public int Volume;
+		[Header("Solo programmatori")]
+		public int riferimento;
+		[Header("Descrizione canzone")]
+		public string Descrizione;
+
+	}
+
+	//-------------------------------- FINE
+
+	private HUD schermata;	
+	[Header("Oggetti padri per la Canvas")]
+	public GameObject P1_HUD;
+	public GameObject P2_HUD;
+
+	[Header("Caselle spawn Player 1")]
+	public GameObject[] Caselle_P1;
+
+	[Header("Caselle spawn Player 2")]
+	public GameObject[] Caselle_P2;
+
+	//POSIZIONI FISSE ALL'INTERNO DELLA SCENA DELLE TORRI DEL PLAYER 1
+	//[Header("Posizioni torri PLAYER 1")]
 	//torri player 1
-	public Transform Torre1_Player1;
-	public Transform Torre2_Player1;
-	public Transform Torre3_Player1;
+	private Transform Torre1_Player1;
+	private Transform Torre2_Player1;
+	private Transform Torre3_Player1;
 
-	[Header("Posizioni torri PLAYER 2")]
+	//POSIZIONI FISSE ALL'INTERNO DELLA SCENA DELLE TORRI DEL PLAYER 2
+	//[Header("Posizioni torri PLAYER 2")]
 	//torri player 2
-	public Transform Torre1_Player2;
-	public Transform Torre2_Player2;
-	public Transform Torre3_Player2;
+	private Transform Torre1_Player2;
+	private Transform Torre2_Player2;
+	private Transform Torre3_Player2;
 
+	//POSIZIONI FISSE ALL'INTERNO DELLA SCENA DEI NEXUS PLAYER 1 E PLAYER 2
 	[Header("Nexus ambo PLAYERS")]
 	//torri player 2
 	public Transform Nexus_Player1;
 	public Transform Nexus_Player2;
 
-	//lista Personaggi Player 1
-	public List<personaggio> Personaggi_P1;
-	private int Personaggi_fermiP1 = 0;
-
-	//lista Personaggi Player 2
-	public List<personaggio> Personaggi_P2;
-	private int Personaggi_fermiP2 = 0;
-
-	//Contatore per il nome dei nemici
-	public int contatore_nemico = 0;
-
 	//Timer per il movimento dei nemici casella per casella
-	private float timer;
-	public float SetTimer = 0.3f;
+	//private float timer;
+	private float SetTimer = 0.3f; 
 
 	private bool isActive;
 
-	private int indiceLista_P1 =0;
-
-	private int indiceLista_P2 =0;
+	[Header("NON TOCCARE!")]
+	public int contatore_nemico = 0;	//variabile per assegnare un nome univoco al giocatore che viene istanziato
 
 	//VARIABILI PER MYDEBUG
-	public bool GestioneTurni_controllo = true;
+	//public bool GestioneTurni_controllo = true;
 
-	public class personaggio
-	{
+	//THREAD
+	private Thread T_Scan;
+	private bool _t1Pausa = false;
 
-		public string Tag;
-		public int Current_step;
-		public string Nome;
-		public GameObject Oggetto;
+	[Header("Variabile per la duarata del turno")]
+	public float Durata_Turno = 20;
+	private float timer = 0;
+	[Header("TIMER A SCHERMO")]
+	public Text Timer_Testo;
 
-	}
+
+	//COROUTINE
+	//[Header("Ogni quanto eseguire lo Scan della Mappa")]
+	private float Tempo_Scan = 3;
+
+	[Header("Energia da assegnare ad ogni passaggio di turno ad ambo i giocatori")]
+	public int Energia;
+
+	//VARIABILE TEMPORANEA PER FAR FUNZIONARE LO STOP
+	private int NemiciFermi = 0;
+
+	//---------------------------------------------------------------------------------------------------- CODICE LISTE PERSONAGGI
+
+												//lista Personaggi Player 1
+												public List<personaggio> Personaggi;
+												private int Personaggi_fermiP1 = 0;
+
+												//Classe che definisce tutte le informazioni di un personaggio
+												public class personaggio
+												{
+
+													public string Tag; 				//tag del personaggio
+													public int Steps;				//Steps Totali del personaggio
+													public int Current_step;		//Steps Correnti del personaggio --- Vedere se è utile
+													public string Nome;				//Nome del personaggio
+													public GameObject Oggetto;		//GameOgject del personaggio
+
+													//Parametro molto importante 
+													public bool appartengo;         //	FALSO = Player1 - VERO = Player 2
+
+												}
+
+	#region METODI_LISTE
+
+		/// <summary>
+		/// Aggiungiamo un personaggio alla lista dei Personaggi in gioco
+		/// </summary>
+		/// <param name="tag">Tag del personaggio</param>
+		/// <param name="steps">Steps del personaggio </param>
+		/// <param name="current_step">Current step del personaggio</param>
+		/// <param name="nome">Nome del personaggio</param>
+		/// <param name="oggetto">Il GameOject del personaggio stesso</param>
+		/// <param name="appartengo">FALSE = Player 1 - TRUE = Player 2</param>
+		public void AggiungereDatoListaPersonaggi(string tag, int steps ,int current_step, string nome, GameObject oggetto, bool appartengo)
+		{
+
+			personaggio dato = new personaggio ();
+
+			dato.Tag = tag;
+			dato.Current_step = current_step;
+			dato.Steps = steps;
+			dato.Nome = nome;
+			dato.Oggetto = oggetto;
+			dato.appartengo = appartengo;
+
+			Personaggi.Add (dato);
+
+		}
+
+		/// <summary>
+		/// Rimuoviamo un personaggio dalla lista dei personaggi dei singoli player
+		/// </summary>
+		/// <param name="nome">Nome del personaggio che vogliamo rimuovere</param>
+		public void RimuoviDatoListaPersonaggi(string nome)
+		{
+
+			Personaggi.Remove(CercaPerNome(nome));
+
+		}
+
+
+		/// <summary>
+		/// ritorna un oggetto della lista con il nome che gli passi
+		/// </summary>
+		/// <returns> Ritorna un oggetto di tipo personaggio</returns>
+		/// <param name="nome">Nome del personaggio che stiamo cercando</param>
+		public personaggio CercaPerNome(string nome)
+		{
+
+			for (int i = 0; i < Personaggi.Count; i++) {
+
+				if (Personaggi[i].Nome == nome) {
+
+
+					//Debug.Log ("Personaggio per nome trovato");
+
+					return Personaggi[i];
+
+				}
+
+			}
+
+			Debug.LogError ("non ho trovato il personaggio nelle liste");
+
+			return null;
+
+
+
+		}
+
+
+		/// <summary>
+		/// Aggiorniamo la lista dei personaggi
+		/// </summary>
+		public void AggiornaListaPersonaggi()
+		{
+
+			Personaggi.Clear ();
+			Debug.Log ("Lista aggiornata");
+
+		}
+
+
+
+		/// <summary>
+		/// ritorna il numero di personaggi correnti che sono fermi 
+		/// </summary>
+		/// <returns> numero dei personaggi fermi</returns>
+		/// <param name="appartengo">FALSE = Player 1 - TRUE = Player 2</param>
+		public int GetPersonaggiFermi(bool appartengo)
+		{
+
+			int PersonaggiFermi = 0;
+
+			for (int i = 0; i < Personaggi.Count; i++) 
+			{
+
+				if (Personaggi[i].appartengo == appartengo && Personaggi[i].Current_step == 0) 
+				{
+
+					PersonaggiFermi++;
+
+				}
+
+			}
+
+			if( PersonaggiFermi > 1)
+			{
+
+				return PersonaggiFermi;
+
+			}
+
+			Debug.Log ("Tutti i personaggi si devono ancora muovere o non ce ne sono");
+
+			return 0;
+
+		}
+
+
+		/// <summary>
+		/// Aggiorniamo il numero di personaggi che sono fermi
+		/// </summary>
+		/// <param name="nome">Nome del personaggio da aggiornare</param>
+		/// <param name="currentSteps">Current steps del personaggio</param>
+		public void AggiornaPersonaggioFermo(string nome, int currentSteps)
+		{
+
+			CercaPerNome (nome).Current_step = currentSteps;
+
+			Debug.Log ("Aggiornato il personaggio: " + nome);
+
+
+		}
+
+
+		/// <summary>
+		/// Ritorna il numero di personaggi in gioco di un Player
+		/// </summary>
+		/// <returns>The numero personaggi fazione.</returns>
+		/// <param name="appartengo">If set to <c>true</c> appartengo.</param>
+		public int GetNumeroPersonaggiFazione(bool appartengo)
+		{
+
+			int NumeroGiocatori = 0;
+
+			for (int i = 0; i < Personaggi.Count; i++) 
+			{
+
+				if (Personaggi [i].appartengo == appartengo) 
+				{
+
+					NumeroGiocatori++;
+
+				}
+
+			}
+
+			if (NumeroGiocatori > 0) 
+			{
+
+				return NumeroGiocatori;
+
+			}
+
+			if (appartengo == true) 
+			{
+				//Player2
+
+				Debug.Log ("Il Player 2 non ha personaggi in gioco");
+
+				return 0;
+			}
+			else 
+			{
+
+				//Player1
+
+				Debug.Log ("Il Player 1 non ha personaggi in gioco");
+
+				return 0;
+
+			}
+
+		}
+
+
+		/// <summary>
+		/// eseguo un controllo per il quale controllo se tutti i personaggi sono fermi oppure no
+		/// </summary>
+		/// <returns> Ritorna TRUE sono tutti i personaggi di un Player sono fermi </returns>
+		/// <param name="appartengo">FALSE = Player 1 - TRUE = Player 2</param>
+		public bool ControlloTuttiPersonaggiFermi(bool appartengo)
+		{
+
+			if (GetNumeroPersonaggiFazione(appartengo) == GetPersonaggiFermi(appartengo)) 
+			{
+
+				/*if (appartengo == true) 
+				{
+					//Player 2
+
+					Debug.Log ("Tutti i personaggi del Player 2 sono fermi");
+
+				} 
+				else 
+				{
+					//Player1
+
+					Debug.Log ("Tutti i personaggi del Player 1 sono fermi");
+				}*/
+
+				return true;
+
+			}
+
+			Debug.LogWarning ("Ci sono ancora personaggi che si devono muovere");
+
+			return false;
+
+		}
+
+	#endregion  
+
+	//---------------------------------------------------------------------------------------------------- FINE
 
 
 	void Awake()
 	{
 
+		//INIZIALIZZO LE VARIABILI DI GIOCO
 		Turni = 1;
 		Energia1 = 10;
 		Energia2 = 10;
-		contatore_nemico = 0;
-		Personaggi_P1 = new List<personaggio> ();
-		Personaggi_P2 = new List<personaggio> ();
+		Personaggi = new List<personaggio> ();
 		timer = SetTimer;
-
 		schermata = gameObject.GetComponent<HUD> ();
 
 	}
@@ -82,59 +360,56 @@ public class GestoreGioco : MonoBehaviour {
 	void Start()
 	{
 
+		//AVVIO THREAD PER LO SCAN
+		//AvvioThread_ScanObstacle ();
 
-
-
+		//Avvio corotuine per scansionare la mappa all'infinito
+		//StartCoroutine (ScanMappa ());
 
 	}
 
 	void Update()
 	{
-
-		//Serve per resettare gli indici
-		if (indiceLista_P1 > Personaggi_P1.Count) 
-		{
-			indiceLista_P1 = 0;
-		}
-
-		if (indiceLista_P2 > Personaggi_P2.Count) 
-		{
-			indiceLista_P2 = 0;
-		}
-
 	
 		//Avvio la fase di combattimento
-		if (Input.GetKeyDown (KeyCode.Space)) 
+		/*if (Input.GetKeyDown (KeyCode.Space)) 
 		{
 
 			FaseCombattimento = true;
+			StartCoroutine (GestioneCombattimento ());
 
-			if(Turni%2 == 0)
-			{ //Player 2
 
-				 
-				//Avvio coroutine per la gestione del movimento del player 2
-				StartCoroutine (GestioneTurniP2 ());
+		}*/
+
+		//Timer della durata del turno 
+		if (FaseCombattimento == true) 
+		{
+
+			timer += Time.deltaTime;
+
+			//Visualiziamo a schermo il timer del turno
+			//Timer_Testo.text = "TIMER TURNO: " + timer.ToString ();
+
+			//Quando scade il tempo passiamo il turno
+			if (timer >= Durata_Turno) 
+			{
+				timer = 0;
+				CambioTurno ();
 
 			}
-			else
-			{//Player 1
-
-				//Avvio coroutine per la gestione del movimento del player 1
-				StartCoroutine (GestioneTurniP1 ());
-
-			}
-
 
 		}
 
+		//DA USARE SOLO PER FORZARE
 		//Avvio in MANUALE il cambio turno
 		if(Input.GetKeyDown(KeyCode.Q))
 		{
 
+			Debug.Log ("FORZATURA: Fermiamo le coroutine e cambiamo turno");
+
+			//Fermiamo tutte le coroutine
+			StopAllCoroutines ();
 			CambioTurno ();
-			StopCoroutine (GestioneTurniP1 ());
-			StopCoroutine (GestioneTurniP2 ());
 
 		}
 
@@ -142,722 +417,553 @@ public class GestoreGioco : MonoBehaviour {
 
 	}
 
-	//Permette il movimento dei personaggi P1 all'interno della scena di gioco 
-	IEnumerator GestioneTurniP1()
-	{
-		GameObject oggetto;
+	#region THREAD
 
-		while (Personaggi_fermiP1 <= Personaggi_P1.Count-1) 
+		private void AvvioThread_ScanObstacle()
 		{
-			indiceLista_P1 = 0;
 
-			while (indiceLista_P1 <= Personaggi_P1.Count - 1) 
+			T_Scan = new Thread (ScanObstacle) { Name = "Thread Scan" };
+
+			if (!T_Scan.IsAlive) 
 			{
 
+				Debug.Log ("THREAD SCAN AVVIATO");
+				T_Scan.Start ();
 
-				AstarPath.active.Scan ();
-
-				oggetto = GameObject.Find (Personaggi_P1 [indiceLista_P1].Nome);
-				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (true);
-				yield return new WaitForSeconds (0.4f);
-				oggetto.GetComponent<Assassin> ().AggiornaListaPriorita();
-				oggetto.GetComponent<Assassin> ().SetTarget ();
-
-				AstarPath.active.Scan ();
-
-
-				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (false);
-
-
-				for(int i = 0; i < Personaggi_P1 [indiceLista_P1].Current_step; i++) 
-				{
-					float distance = Vector3.Distance (oggetto.GetComponent<Characters> ().transform.localPosition, oggetto.GetComponent<AILerp> ().target.localPosition);
-
-					if (distance > oggetto.GetComponent<Characters> ().targetDistance) 
-					{
-						Debug.Log ("Sono entrato nell'if");
-						oggetto.GetComponent<AILerp> ().canMove = true;
-						oggetto.GetComponent<AILerp> ().canSearch = true;
-						yield return new WaitForSeconds (0.3f);
-					} 
-					else 
-					{
-
-						Debug.Log ("Sono entrato nell'else");
-
-						if (oggetto.GetComponent<Characters> ().currentSteps >= oggetto.GetComponent<Characters> ().attackCost) {
-
-							Debug.Log ("Sono entrato nell'if per eseguire l'attacco");
-							// attacco
-							//istanziare coroutine
-							yield return StartCoroutine (AttaccoPersonaggio (oggetto));
-
-							//distruggere coroutine
-							//StopCoroutine(AttaccoPersonaggio);
-						} 
-						else 
-						{
-
-							Debug.Log ("Metto gli steps a zero");
-							oggetto.GetComponent<Characters> ().currentSteps = 1;
-
-						}
-						yield return new WaitForSeconds (0.3f);
-					}
-				}
-
-				indiceLista_P1++;
-
-			}
-		}
-
-		indiceLista_P1 = 0;
-
-		yield return new WaitForSeconds (0.3f);
-
-	}
-
-	//Permette il movimento dei personaggi P2 all'interno della scena di gioco 
-	IEnumerator GestioneTurniP2()
-	{
-		GameObject oggetto;
-
-		while (Personaggi_fermiP2 <= Personaggi_P2.Count-1) 
-		{
-			indiceLista_P2 = 0;
-
-			while (indiceLista_P2 <= Personaggi_P2.Count - 1) 
+			} 
+			else 
 			{
 
+				Debug.LogError ("IMPOSSIBILE CHE IL TREAD: " + T_Scan.Name + " SIA AVVIATO 2 VOLTE");
 
-				AstarPath.active.Scan ();
-
-				oggetto = GameObject.Find (Personaggi_P2 [indiceLista_P2].Nome);
-				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (true);
-				yield return new WaitForSeconds (0.4f);
-				oggetto.GetComponent<Assassin> ().AggiornaListaPriorita();
-				oggetto.GetComponent<Assassin> ().SetTarget ();
-
-				AstarPath.active.Scan ();
-
-
-				oggetto.gameObject.transform.GetChild (1).gameObject.SetActive (false);
-
-				for(int i = 0; i < Personaggi_P2 [indiceLista_P2].Current_step; i++) 
-				{
-
-					float distance = Vector3.Distance (oggetto.GetComponent<Characters> ().transform.localPosition, oggetto.GetComponent<AILerp> ().target.localPosition);
-
-					if (distance > oggetto.GetComponent<Characters> ().targetDistance) 
-					{
-						oggetto.GetComponent<AILerp> ().canMove = true;
-						oggetto.GetComponent<AILerp> ().canSearch = true;
-						yield return new WaitForSeconds (0.3f);
-					} 
-					else 
-					{
-						if (oggetto.GetComponent<Characters> ().currentSteps >= oggetto.GetComponent<Characters> ().attackCost) {
-							// attacco
-							//istanziare coroutine
-							yield return StartCoroutine (AttaccoPersonaggio (oggetto));
-
-							//distruggere coroutine
-							//StopCoroutine(AttaccoPersonaggio);
-						} 
-						else 
-						{
-
-							Debug.Log ("Metto gli steps a zero");
-							oggetto.GetComponent<Characters> ().currentSteps = 1;
-
-
-						}
-						yield return new WaitForSeconds (0.3f);
-					}
-				}
-
-				indiceLista_P2++;
 
 			}
+
 		}
 
-		indiceLista_P2 = 0;
+		/// <summary>
+		/// Thread per la scqansione costante della mappa.
+		/// </summary>
+		/// <returns>The obstacle.</returns>
+		private static void ScanObstacle()
+		{
+			
+			//contatore di volte 
+			int i = 0;
 
-		yield return new WaitForSeconds (0.3f);
+			while(true)
+			{
 
-	}
+				Debug.Log ("SCAN n°"+i++);
+				AstarPath.active.Scan ();
 
-	//Coroutine per l'attacco del personaggio 
-	IEnumerator AttaccoPersonaggio(GameObject oggetto)
-	{ 
-		
-		Animator anim = oggetto.GetComponentInChildren<Animator>();
-		GameObject enemy = oggetto.GetComponent<AILerp> ().target.gameObject;
+				Thread.Sleep (3000);
 
-		anim.SetBool ("isAttacking", true);
+			}
 
-		if (anim.GetBool ("isAttacking")) 
-		{   
-		
-			float danno = oggetto.GetComponent<Characters> ().Attack (enemy);
-			enemy.GetComponent<Characters> ().DamageTaken (danno);
-			oggetto.GetComponent<Characters> ().currentSteps -= oggetto.GetComponent<Characters> ().attackCost;
-			Debug.Log ("Attacco");
-			Debug.Log ("DANNO " + danno);
-			Debug.Log (enemy.GetComponent<Characters>().currentHealth);
-			anim.SetBool ("isAttacking", false);
+
 		}
-		
-		yield return null;
 
+	#endregion
 
-	}
+	#region COROUTINE
 
-	//Coroutine per la scqansione costante della mappa
-	IEnumerator ScanObstacle()
-	{
+		/// <summary>
+		/// Coroutine che si occupa della gestione compessiva di un singolo turno di combattimento 
+		/// </summary>
+		/// <returns>The combattimento.</returns>
+		IEnumerator GestioneCombattimento()
+		{
 
-		while (true) {
+			if (FaseCombattimento == true) 
+			{
 
-			AstarPath.active.Scan ();
+				Debug.Log ("FASE DI COMBATTIMENTO");
+
+				//StartCoroutine (AttaccoTorri ());
+				//yield return new WaitForSeconds (7f);
+
+				if (Turni % 2 == 0) 
+				{
+					//Player 2
+					//StartCoroutine (AttaccoNemici (true));
+
+				} 
+				else 
+				{
+					//Player 1
+					//StartCoroutine (AttaccoNemici (false));
+				}
+			} 
+			else 
+			{
+
+				Debug.LogError ("Sono nella coroutine di combattimento senza che siamo in combattimento");
+				
+
+			}
+			
+
 			yield return null;
-
 		}
 
-	}
-
-	// metodo che cambia il turno 
-	public void CambioTurno()
-	{     
-
-		Debug.Log ("cambio turno");
-		StopCoroutine (ScanObstacle ());
-
-		Turni++;
-		schermata.AggiornaTurnoAschermo ();
-		Energia1 = 10;
-		schermata.AggiornaEnergiaPlayer1 ();
-		Energia2 = 10;
-		schermata.AggiornaEnergiaPlayer2 ();
-		FaseCombattimento = false;
-		//Resettiamo il numero di personaggi fermi 
-		ResetPersonaggiFermi ();
-
-	}
-
-	//ritorna il turno corrente
-	public int GetTurno()
-	{
-
-		return Turni;
-
-	}
-
-	//ritorna energia player 1
-	public int GetEnergiaPlayer1()
-	{
-
-		return Energia1;
-
-	}
-
-	//ritorna energia player2
-	public int GetEnergiaPlayer2()
-	{
-
-		return Energia2;
-
-	}
-
-	public void SottraiEnergia(int consumo)
-	{
-
-		if ( Turni % 2 == 0) 
-		{//pari
-
-			Energia2 = Energia2 - consumo;
-			schermata.AggiornaEnergiaPlayer2 ();
-
-		} 
-		else //dispari
+		/// <summary>
+		/// coroutine che gestisce l'attacco delle torri
+		/// </summary>
+		/// <returns>The torri.</returns>
+		IEnumerator AttaccoTorri()
 		{
 
-			Energia1 = Energia1 - consumo;
-			schermata.AggiornaEnergiaPlayer1 ();
+			Debug.Log ("INIZIO ATTACCO TORRI");
 
-		}
+			if (Turni % 2 != 0) 
+			{
+				//PLAYER 2
 
-	}
+				//Controllo se il Nexus e le Torri sono ancora in scena 
+				//Eseguiamo i vari attacchi
+				if (Torre1_Player2.gameObject.scene != null || Torre1_Player2.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
 
-	//ci dice se siamo in fase di combattimento oppure no
-	public bool IsFaseCombattimento()
-	{
+					Structures T1;
+					T1 = Torre1_Player2.gameObject.GetComponent<Structures> ();
 
-		return FaseCombattimento;
+					T1.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					T1.gameObject.GetComponent<Structures> ().Attacco ();
+					T1.DisattivaRadar ();
 
-	}
 
-	//Aggiungiamo un personaggio alla lista dei player a seconda del turno
-	public void AggiungereDatoListaPersonaggi(string tag, int current_step, string nome, GameObject oggetto)
-	{
+				}
+				if (Torre2_Player2.gameObject.scene != null || Torre2_Player2.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
 
-		personaggio dato = new personaggio ();
+					Structures T2;
+					T2 = Torre2_Player2.gameObject.GetComponent<Structures> ();
 
-		dato.Current_step = current_step;
-		dato.Tag = tag;
-		dato.Nome = nome;
-		dato.Oggetto = oggetto;
+					T2.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					T2.gameObject.GetComponent<Structures> ().Attacco ();
+					T2.DisattivaRadar ();
 
-		if (Turni % 2 == 0) 
-		{//player 2
+				}
+				if (Torre3_Player2.gameObject.scene != null || Torre3_Player2.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
 
-			Personaggi_P2.Add (dato);
+					Structures T3;
+					T3 = Torre3_Player2.gameObject.GetComponent<Structures> ();
 
-		} 
-		else //player 1
-		{
+					T3.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					T3.gameObject.GetComponent<Structures> ().Attacco ();
+					T3.DisattivaRadar ();
 
-			Personaggi_P1.Add (dato);
+				}
+				if (Nexus_Player2.gameObject.scene != null || Nexus_Player2.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
 
-		}
+					Structures N;
+					N = Nexus_Player1.gameObject.GetComponent<Structures> ();
 
-	}
+					N.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					N.gameObject.GetComponent<Structures> ().Attacco ();
+					N.DisattivaRadar ();
 
-	//Aggiorniamo le liste dei personaggi dei singoli player a seconda del turno
-	/*public void AggiornaDatoListaPersonaggi(string nome, int steps, string tag, int current_steps)
-	{
-		
-		personaggio dato = new personaggio ();
-
-		dato.Current_step = steps;
-		dato.Nome = nome;
-		dato.Tag = tag;
-
-		//azione pericolosa 
-		try
-		{
-			if (Turni % 2 == 0) 
-			{//player 2
-
-				int indice;
-
-				dato = new personaggio();
-
-				dato.Current_step = current_steps;
-				dato.Nome = nome;
-				dato.Tag = tag;
-
-				indice = Personaggi_P2.IndexOf (dato);
-				Personaggi_P2 [indice] = dato;
-
+				}
+				
 
 
 			} 
-			else //player 1
+			else 
 			{
 
-				int indice;
+				//PLAYER 1
 
-				indice = Personaggi_P1.IndexOf (dato);
+				//Controllo se il Nexus e le Torri sono ancora in scena 
+				//Eseguiamo i vari attacchi
+				if (Torre1_Player1.gameObject.scene != null || Torre1_Player1.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
 
-				dato = new personaggio();
+					Structures T1;
+					T1 = Torre1_Player1.gameObject.GetComponent<Structures> ();
 
-				dato.Current_step = current_steps;
-				dato.Nome = nome;
-				dato.Tag = tag;
-
-				Personaggi_P1 [indice] = dato;
-
-			}
-		}
-		catch
-		{
-
-			Debug.LogError ("Errore nell'aggiornamento dei dati della lista");
-
-		}
-
-	}*/
-
-	//Rimuoviamo un personaggio dalla lista dei personaggi dei singoli player
-	public void RimuoviDatoListaPersonaggi(string nome)
-	{
-
-		if (Turni % 2 == 0) 
-		{//player 2
-
-			Personaggi_P1.Remove(CercaPerNome(nome));
-
-		}   
-		else //player 1
-		{
-
-			Personaggi_P2.Remove(CercaPerNome(nome));
-
-		}
-
-	}
-
-	//ritorna un oggetto della lista con il nome che gli passi
-	public personaggio CercaPerNome(string nome)
-	{
-
-		if (Turni % 2 == 0) 
-		{//player 2
-
-			for (int i = 0; i < Personaggi_P1.Count; i++) {
-
-				if (Personaggi_P1 [i].Nome == nome) {
+					T1.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					T1.gameObject.GetComponent<Structures> ().Attacco ();
+					T1.DisattivaRadar ();
 
 
-					return Personaggi_P1 [i];
+				}
+				if (Torre2_Player1.gameObject.scene != null || Torre2_Player1.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
+
+					Structures T2;
+					T2 = Torre2_Player1.gameObject.GetComponent<Structures> ();
+
+					T2.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					T2.gameObject.GetComponent<Structures> ().Attacco ();
+					T2.DisattivaRadar ();
+
+				}
+				if (Torre3_Player1.gameObject.scene != null || Torre3_Player1.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
+
+					Structures T3;
+					T3 = Torre3_Player1.gameObject.GetComponent<Structures> ();
+
+					T3.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					T3.gameObject.GetComponent<Structures> ().Attacco ();
+					T3.DisattivaRadar ();
+
+				}
+				if (Nexus_Player1.gameObject.scene != null || Nexus_Player1.gameObject.GetComponent<Structures>().currentHealth > 0) 
+				{
+
+					Structures N;
+					N = Nexus_Player2.gameObject.GetComponent<Structures> ();
+
+					N.AttivaRadar();
+					yield return new WaitForSeconds (1f);
+					N.gameObject.GetComponent<Structures> ().Attacco ();
+					N.DisattivaRadar ();
 
 				}
 
 			}
+
+			Debug.Log ("FINE ATTACCO TORRI");
+			yield return new WaitForSeconds (0.3f);
+
+		}
+
+		/// <summary>
+		/// Coroutine per la gestione dell'attacco dei personaggi
+		/// </summary>
+		/// <returns>The nemici.</returns>
+		/// <param name="appartengo"> FALSE = Player 1 - TRUE = Player 2 </param>
+		/*IEnumerator AttaccoNemici(bool appartengo)
+		{
+			GameObject Personaggio;
+
+			int NumeroPersonaggiFermi = 0;  //Essendo l'inizio del ciclo ho ragione di pensare che nessuno è fermo
+			NemiciFermi = 0; //Resetto il numero di personaggi fermi
+
+			//Continuo a ciclare fino a quando non mi restituisce true il metodo nel While
+			//ControlloTuttiPersonaggiFermi(appartengo) != true --------> CONDIZIONE GIUSTA IN TEORIA
+			while (GetNumeroPersonaggiFazione(appartengo) != NemiciFermi) 
+			{
+				int indiceLista = 0;
 				
-		} 
-		else //player 1
-		{
+
+				while (indiceLista <= Personaggi.Count - 1) 
+				{
+					
+					if (Personaggi [indiceLista].appartengo == appartengo) 
+					{
+						Personaggio = GameObject.Find (Personaggi [indiceLista].Nome);
+
+						//Attivo il radar per cercare nemici in zona
+						Personaggio.GetComponent<Characters> ().AttivaRadar ();
+						yield return new WaitForSeconds (1f);
+
+						Personaggio.GetComponent<Assassin> ().AggiornaListaPriorita ();
+						Personaggio.GetComponent<Assassin> ().SetTarget ();
+						AstarPath.active.Scan ();
+
+						for (int i = 0; i < Personaggi [indiceLista].Current_step; i++) 
+						{
+							
+							if (Personaggio.GetComponent<Characters> ().isFighting != true) {
+								Personaggio.GetComponent<AILerp> ().canMove = true;
+								Personaggio.GetComponent<AILerp> ().canSearch = true;
+								yield return new WaitForSeconds (0.3f);
+							} 
+							else 
+							{
+							
+
+								Debug.Log (Personaggio.name + " ATTACCA");
+								// attacco
+								//istanziare coroutine
+								yield return StartCoroutine (AttaccoPersonaggio (Personaggio));
+
+								//distruggere coroutine
+								//StopCoroutine(AttaccoPersonaggio);
 			
-			for (int i = 0; i < Personaggi_P2.Count; i++) {
 
-				if (Personaggi_P2 [i].Nome == nome) {
+							}
 
+						}
+						
+						//Disattivo il radar
+						Personaggio.GetComponent<Characters> ().DisattivaRadar ();
+						NemiciFermi++;
+					}
 
-					return Personaggi_P2 [i];
+					indiceLista++;
 
 				}
+			}
+
+			yield return new WaitForSeconds (0.3f);
+
+			CambioTurno ();
+
+		}*/
+
+		/// <summary>
+		/// Esegue lo scan della mappa ogni X secondi
+		/// </summary>
+		/// <returns></returns>
+		IEnumerator ScanMappa()
+		{
+
+			int i = 0;
+			
+			while (true) 
+			{
+				
+				AstarPath.active.Scan ();
+				//Debug.Log("SCAN n°"+i++);
+
+				yield return new WaitForSeconds (Tempo_Scan);
 
 			}
 
 		}
-
-		Debug.LogError ("non ho trovato il personaggio nelle liste");
-
-		return null;
-
-
-
-	}
-
-	//ritorna un oggetto della lista con il nome che gli passi
-	public Transform CercaPerNomeLaTransform(string nome)
-	{
-
-		if (Turni % 2 == 0) 
-		{//player 2
-
-			for (int i = 0; i < Personaggi_P1.Count; i++) {
-
-				if (Personaggi_P1 [i].Nome == nome) {
-
-
-					return Personaggi_P1 [i].Oggetto.transform;
-
-				}
-
-			}
-
-		} 
-		else //player 1
-		{
-
-			for (int i = 0; i < Personaggi_P2.Count; i++) {
-
-				if (Personaggi_P2 [i].Nome == nome) {
-
-
-					return Personaggi_P2 [i].Oggetto.transform;
-
-				}
-
-			}
-
-		}
-
-		Debug.LogError ("non ho trovato il personaggio nelle liste");
-
-		return null;
-
-
-
-	}
-
-	//Aggiorniamo la lista dei personaggi a secondo del turno corrente 
-	public void AggiornaListaPersonaggi()
-	{
-
-		if (Turni % 2 == 0) 
-		{
-			//Player 2
 		
-			Personaggi_P2.Clear ();
 
-			Debug.Log ("Lista P1 Aggiornata");
+		/// <summary>
+		/// Coroutine che gestiscono il combattimento del personaggio
+		/// </summary>
+		/// <returns>The personaggio.</returns>
+		/// <param name="oggetto">Personaggio che deve attaccare</param>
+		IEnumerator AttaccoPersonaggio(GameObject oggetto)
+		{
+
+			Animator anim = oggetto.GetComponentInChildren<Animator>();
+			GameObject enemy = oggetto.GetComponent<AILerp>().target.gameObject;
+
+			anim.SetBool("isAttacking", true);
+
+			if (anim.GetBool("isAttacking"))
+			{
+
+				float danno = oggetto.GetComponent<Characters> ().Attack (enemy);
+				enemy.GetComponent<Characters>().DamageTaken(danno);
+				//oggetto.GetComponent<Characters>().currentSteps -= oggetto.GetComponent<Characters>().attackCost;
+				Debug.Log("Attacco");
+				Debug.Log("DANNO " + danno);
+				Debug.Log(enemy.GetComponent<Characters>().currentHealth);
+				//anim.SetBool("isAttacking", false);
+			}
+
+			yield return null;
+
+
+		}
+
+	#endregion
+		
+
+	#region METODI_GAMEPLAY
+
+		/// <summary>
+		/// Metodo che cambia il turno
+		/// </summary>
+		public void CambioTurno()
+		{    
+
+			Debug.Log ("CAMBIO TURNO");
+			Turni++;
+			schermata.AggiornaTurnoAschermo ();
+
+			if (Turni % 2 == 0) 
+			{ //Player 2
+				
+				Energia1 += 10;
+				schermata.AggiornaEnergiaPlayer1 ();
+				P1_HUD.SetActive (false);
+				P2_HUD.SetActive (true);
+
+			} 
+			else 
+			{ //Player 1
+
+
+				Energia2 += 10;
+				schermata.AggiornaEnergiaPlayer2 ();
+				P1_HUD.SetActive (true);
+				P2_HUD.SetActive (false);
+
+			}
+
+			//Resettiamo i punti di spawn dei personaggi 
+			ResetVettoreSpawnPersonaggi ();
+
+			FaseCombattimento = false;
+
+		}
+
+
+		/// <summary>
+		/// Sottrai energia ad un giocatore
+		/// </summary>
+		/// <param name="consumo"> Concumo dell'energia </param>
+		/// <param name="giocatore"> FALSE = Player 1 - TRUE = Player 2 </param>
+		public void SottraiEnergia(int consumo, bool giocatore)
+		{
+
+			if ( giocatore == true) 
+			{
+				//player 2
+
+				Energia2 = Energia2 - consumo;
+				//Aggiorniamo a schemro il numero di energia del player 2
+				schermata.AggiornaEnergiaPlayer2 ();
+
+			} 
+			else 
+			{
+
+				//Player 1
+
+				Energia1 = Energia1 - consumo;
+				//Aggiorniamo a schemro il numero di energia del player 1
+				schermata.AggiornaEnergiaPlayer1 ();
+
+			}
+
+		}
+
+		/// <summary>
+		/// Aumenta energia del giocatore
+		/// </summary>
+		/// <param name="consumo"> Quantità energia </param>
+		/// <param name="giocatore"> FALSE = Player 1 - TRUE = Player 2 </param>
+		public void AggiungiEnergia(int consumo, bool giocatore)
+		{
+
+			if ( giocatore == true) 
+			{
+				//player 2
+
+				Energia2 = Energia2 + consumo;
+				//Aggiorniamo a schemro il numero di energia del player 2
+				schermata.AggiornaEnergiaPlayer2 ();
+
+			} 
+			else 
+			{
+
+				//Player 1
+
+				Energia1 = Energia1 + consumo;
+				//Aggiorniamo a schemro il numero di energia del player 1
+				schermata.AggiornaEnergiaPlayer1 ();
+
+			}
+
+		}
+
+		public void AvvioFaseCombattimento()
+		{
+
+			FaseCombattimento = true;
+			StartCoroutine (GestioneCombattimento ());
+
+		}
+
+	/// <summary>
+	/// Metodo per resettare le caselle di Spawn dei personaggi da occupate a libere
+	/// </summary>
+	public void ResetVettoreSpawnPersonaggi()
+	{
+
+		Debug.Log ("Resettiamo i punti Spawn");
+
+		if (Turni % 2 == 0) 
+		{
+
+			//Resettare il vettore caselle personaggi Player 2
+
+			for (int i = 0; i < Caselle_P2.Length; i++) 
+			{
+
+				Caselle_P2 [i].tag = "Libera";
+
+			}
+
 		} 
 		else 
 		{
-			//Player 1
 
-			Personaggi_P1.Clear ();
+			//Resettare il vettore caselle personaggi Player 1
 
-			Debug.Log ("Lista P2 Aggiornata");
-
-		}
-
-	}
-
-	//Muoviamo il singolo nemico alla volta a secondo del turno
-	/*public void MuoviSingoloNemico()
-	{
-
-
-		GameObject oggetto;
-
-		if (Turni % 2 == 0) 
-		{
-			//Player 2
-
-			for (int i = 0; i < Personaggi_P2.Count; i++) 
+			for (int i = 0; i < Caselle_P1.Length; i++) 
 			{
 
-				oggetto = GameObject.Find (Personaggi_P2 [i].Nome);
-
-				//WaitForSeconds (0.1f);
-
-				if (oggetto.GetComponent<Characters> ().currentSteps > 1) 
-				{
-
-					oggetto.GetComponent<AILerp> ().canMove = true;
-					oggetto.GetComponent<AILerp> ().canSearch = true;
-					isActive = false;
-
-				}
+				Caselle_P1 [i].tag = "Libera";
 
 			}
-
-		} 
-		else 
-		{
-			//Player 1
-
-
-			for (int i = 0; i < Personaggi_P1.Count; i++) 
-			{
-
-				oggetto = GameObject.Find (Personaggi_P1 [i].Nome);
-
-				//WaitForSeconds (0.1f);
-
-				if (oggetto.GetComponent<Characters> ().currentSteps > 1) 
-				{
-
-					oggetto.GetComponent<AILerp> ().canMove = true;
-					oggetto.GetComponent<AILerp> ().canSearch = true;
-					isActive = false;
-
-				}
-
-			}
-
 
 		}
 
-	}*/
-
-
-	//ritorna il numero di personaggi correnti che sono fermi P1
-	public int GetPersonaggiP1Fermi()
-	{
-
-		return Personaggi_fermiP1;
 
 	}
 
-	//ritorna il numero di personaggi correnti che sono fermi P1
-	public int GetPersonaggiP2Fermi()
-	{
+	#endregion
 
-		return Personaggi_fermiP2;
+	#region GET_REGION
 
-	}
-
-	//Aggiorniamo il numero di personaggi che sono fermi P1
-	public void AggiornaPersonaggiFermi()
-	{
-
-		if (Turni % 2 == 0) 
-		{//player 2
-
-		
-			Personaggi_fermiP2++;
-
-			//dopo l'aggiornamento contorllo se tutti i personaggi sono fermi 
-			if (ControlloPersonaggiFermi () == true) {
-
-				CambioTurno ();
-			}
-
-		} 
-		else //player 1
+		/// <summary>
+		/// Ritorna il turno corrente
+		/// </summary>
+		/// <returns>Ritorna il numero corrente del turo</returns>
+		public int GetTurno()
 		{
 
-
-			Personaggi_fermiP1++;
-
-			//dopo l'aggiornamento contorllo se tutti i personaggi sono fermi 
-			if (ControlloPersonaggiFermi () == true) {
-
-				CambioTurno ();
-
-			}
-
-
-		}
-
-	}
-
-	public void ResetPersonaggiFermi()
-	{
-
-		if (Turni % 2 == 0) 
-		{//player 2
-
-
-			Personaggi_fermiP2 = 0;
-
-		} 
-		else //player 1
-		{
-
-
-			Personaggi_fermiP1 = 0;
-
-
-		}
-
-	}
-
-	//eseguo un controllo per il quale controllo se tutti i personaggi sono fermi oppure no
-	public bool ControlloPersonaggiFermi()
-	{
-
-		if (Turni % 2 == 0) 
-		{//player 2
-
-			if (Personaggi_P2.Count == Personaggi_fermiP2) {
-
-
-				Debug.Log ("Tutti i personaggi P1 sono fermi");
-
-				return true;
-
-			}
-
-			return false;
-
-		} 
-		else //player 1
-		{
-
-			if (Personaggi_P1.Count == Personaggi_fermiP1) {
-
-
-				Debug.Log ("Tutti i personaggi P2 sono fermi");
-
-				return true;
-
-			}
-
-			return false;
-
-		}
-
-		Debug.LogError ("non ho trovato il personaggio nelle liste");
-
-		return false;
-
-	}
-
-	/*IEnumerator GestioneTurni()
-	{
-		GameObject oggetto;
-
-		//try
-		//{
-		//Player 1
-		if (Turni % 2 != 0)
-		{
-			while (Personaggi_fermiP1 <= Personaggi_P1.Count-1) 
-			{
-				indiceLista_P1 = 0;
-
-				while (indiceLista_P1 <= Personaggi_P1.Count - 1) 
-				{
-
-					oggetto = GameObject.Find (Personaggi_P1 [indiceLista_P1].Nome);
-
-					if (oggetto.GetComponent<Characters> ().currentSteps > 1) {
-
-						AstarPath.active.Scan ();
-						yield return new WaitForSeconds (0.2f);
-						oggetto.GetComponent<AILerp> ().canMove = true;
-						oggetto.GetComponent<AILerp> ().canSearch = true;
-						//ScanObstacle ();
-						indiceLista_P1++;
-						yield return new WaitForSeconds (0.6f);
-
-					}
-
-				}
-			}
-
-			yield return new WaitForSeconds (0.6f);
-		}
-		//Player 2
-		if (Turni % 2 == 0)
-		{
-			while (Personaggi_fermiP2 <= Personaggi_P2.Count-1) 
-			{
-				indiceLista_P2 = 0;
-
-				while (indiceLista_P2 <= Personaggi_P2.Count - 1) 
-				{
-
-					oggetto = GameObject.Find (Personaggi_P2 [indiceLista_P2].Nome);
-
-					if (oggetto.GetComponent<Characters> ().currentSteps > 1) {
-
-						AstarPath.active.Scan ();
-						yield return new WaitForSeconds (0.2f);
-						oggetto.GetComponent<AILerp> ().canMove = true;
-						oggetto.GetComponent<AILerp> ().canSearch = true;
-						//ScanObstacle ();
-						indiceLista_P2++;
-						yield return new WaitForSeconds (0.6f);
-
-					}
-
-				}
-			}
-
-			yield return new WaitForSeconds (0.6f);
-
-		}
-
-		//}
-		catch 
-		{
-
-			Debug.LogError ("ERRORE COROUTINE GestioneTurni");
-			GestioneTurni_controllo = false;
-
+			return Turni;
 
 		}
 
 
-		//yield return new WaitForSeconds (0.3f);
+		/// <summary>
+		///	Ritorna l'energia del Player 1
+		/// </summary>
+		/// <returns> Ritorna l'energia del Player 1</returns>
+		public int GetEnergiaPlayer1()
+		{
 
-	}*/
+			return Energia1;
+
+		}
+
+		/// <summary>
+		///	Ritorna l'energia del Player 2
+		/// </summary>
+		/// <returns> Ritorna l'energia del Player 2</returns>
+		public int GetEnergiaPlayer2()
+		{
+
+			return Energia2;
+
+		}
+
+		/// <summary>
+		/// ci dice se siamo in fase di combattimento oppure no
+		/// </summary>
+		/// <returns>Ritorna TRUE se siamo in fase di combattimento, mentre FALSO se non lo siamo</returns>
+		public bool IsFaseCombattimento()
+		{
+
+			return FaseCombattimento;
+
+		}
+
+	#endregion	
+
 }
